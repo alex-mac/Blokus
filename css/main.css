@@ -3,8 +3,8 @@ body {
 }
 
 #game-board {
-	height: 640px;
-	width: 640px;
+	height: 602px;
+	width: 602px;
 	border: 1px solid black;
 	margin: 0 auto;
 	margin-top: 50px;
