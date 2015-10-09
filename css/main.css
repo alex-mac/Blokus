@@ -2,12 +2,21 @@ body {
 	background: salmon;
 }
 
-#gameBoard{
-	height: 600px;
-	width: 600px;
+#game-board {
+	height: 640px;
+	width: 640px;
 	border: 1px solid black;
 	margin: 0 auto;
 	margin-top: 50px;
+}
+
+.game-tile{
+	float: left;
+	font-size: 0;
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	border: 1px solid gray;
 }
 
 
