@@ -1,6 +1,13 @@
+body {
+	background: salmon;
+}
+
 #gameBoard{
 	height: 600px;
 	width: 600px;
-	border: 1px solid red;
+	border: 1px solid black;
+	margin: 0 auto;
+	margin-top: 50px;
 }
+
 
