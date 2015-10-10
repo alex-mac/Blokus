@@ -9,7 +9,7 @@ var setGameBoard = function(){
 			var gameTile = $("<div class='game-tile' id='square" + i + "-" + j + "'></div>");
 			$("#game-stats-container").append(gameTile);
 
-			// colors the unplayable arrays
+			// colors the unplayable arrays, make same color as bg l8r
 			if (i === 0 || i === 21 || j === 0 || j === 21) {
 				var targetSquareDiv = "#square" + i + "-" + j;
 				$(targetSquareDiv).css("background-color", "black");
@@ -27,6 +27,21 @@ var setGameBoard = function(){
 	gameBoard[21][21] = 1;
 }
 
+//checks if it is a valid move or not
+var validMove = function() {
+	// conditions to make a move:
+		// none of the blocks are taken (3's position must be null for all 3s)
+		// sides can't be touching same color
+		// corners must match color
+
+
+	// if corners (1) match with another corner (1)
+		// and sides (2) aren't touching other sides (2)
+		// and your pieces (3) are ONLY over nulls in the array
+		// 
+		//  then return true
+
+}
 
 var gameBoard = [];
 
@@ -35,9 +50,7 @@ $(document).ready(function(){
 
 	setGameBoard();
 
-	
-
-console.log(gameBoard);
+// console.log(gameBoard);
 //play a piece condition / function
 
 });
