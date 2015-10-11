@@ -49,8 +49,20 @@ var gameBoard = [];
 $(document).ready(function(){
 
 	setGameBoard();
+	
+	.ajax(
+		url: "blokus-pieces.html",
+		{
+			method:"GET", 
+			success: function(data, textString, garbage){
+				var shapesArray = data;
+			}
+		}
+	);
 
-// console.log(gameBoard);
+
+
+console.log(gameBoard);
 //play a piece condition / function
 
 });
