@@ -1,3 +1,12 @@
+var piece1 = [  
+      [0, 0, 0, 0, 0, 0, 0], // * * * * *
+      [0, 0, 0, 0, 0, 0, 0], //index = 0
+      [1, 2, 2, 2, 2, 2, 1],
+      [2, 3, 3, 3, 3, 3, 2],
+      [1, 2, 2, 2, 2, 2, 1],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]];
+
 
 var setGameBoard = function(){
 	
@@ -11,9 +20,11 @@ var setGameBoard = function(){
 
 			// colors the unplayable arrays, make same color as bg l8r
 			if (i === 0 || i === 21 || j === 0 || j === 21) {
+
 				var targetSquareDiv = "#square" + i + "-" + j;
 				$(targetSquareDiv).css("background-color", "black");
 				$(targetSquareDiv).css("border","none");
+				$(targetSquareDiv).addClass("border")
 				console.log(targetSquareDiv);
 			}
 		}
@@ -49,20 +60,36 @@ var gameBoard = [];
 $(document).ready(function(){
 
 	setGameBoard();
-	
-	.ajax(
-		url: "blokus-pieces.html",
-		{
-			method:"GET", 
-			success: function(data, textString, garbage){
-				var shapesArray = data;
-			}
+
+	$(".game-tile").hover(function() {
+		if (!$( this ).hasClass("border")){
+			$(this).css("background-color", "red");
 		}
-	);
+	}, function() {
+		if (!$( this ).hasClass("border")){
+			$( this ).css("background-color", "white");
+		}
+	});
+	
+	// $("#left-side").click(function(){
+
+	// })
+	// $.ajax(
+	// 	"./blokus-pieces.js",
+	// 	{
+	// 		method:"GET", 
+	// 		success: function(data, textString, garbage){
+	// 			var shapesArray = data;
+	// 			for (var i = 0; i < shapesArray.length; i++){
+	// 				console.log(shapesArray[i]);
+	// 			}
+	// 		}
+	// 	}
+	// );
 
 
 
-console.log(gameBoard);
+// console.log(gameBoard);
 //play a piece condition / function
 
 });
