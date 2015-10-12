@@ -40,12 +40,56 @@
   background-image: url('../images/Blokus-pieces-25.png');
   background-repeat: no-repeat;
   display: inline-block;
+  margin: 10px;
+}
+
+.piece-01{
+	height: 40px;
+	width: 110px;
+	background-position: -185px -55px;
+}
+
+
+.piece-13{
+	height: 70px;
+	width: 90px;
+	background-position: -425px -30px;
+}
+
+.piece-14{
+	height: 70px;
+	width: 70px;
+	background-position: 10px -30px;
+}
+
+.piece-15{
+	height: 70px;
+	width: 80px;
+	background-position: -80px -30px;
+}
+
+.piece-16{
+	height: 70px;
+	width: 85px;
+	background-position: -320px -30px;
+}
+
+.piece-17 {
+	height: 40px;
+	width: 82px;
+	background-position: -365px 10px;
+}
+
+.piece-18 {
+	height: 60px;
+	width: 65px;
+	background-position: -255px 10px;
 }
 
 .piece-19 {
-	height: 500px;
-	width: 500px;
-	background-position: -60px 0px;
+	height: 40px;
+	width: 65px;
+	background-position: -145px 10px;
 }
 
 .piece-20 {
