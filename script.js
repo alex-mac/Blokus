@@ -1,41 +1,237 @@
-var piece1 = [  
+var gamePiece = [  
+   [          
       [0, 0, 0, 0, 0, 0, 0], // * * * * *
       [0, 0, 0, 0, 0, 0, 0], //index = 0
+      [1, 2, 2, 2, 2, 2, 1],
+      [2, 3, 3, 3, 3, 3, 2],
+      [1, 2, 2, 2, 2, 2, 1],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+
+   [                         // * * * *
+      [0, 0, 0, 0, 0, 0, 0], // *
+      [0, 1, 2, 1, 0, 0, 0], //index = 1
+      [0, 2, 3, 2, 2, 2, 1],
+      [0, 2, 3, 3, 3, 3, 2],
+      [0, 1, 2, 2, 2, 2, 1],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+   [                          //   * * *
+      [0, 0, 1, 2, 1, 0, 0],  // * *
+      [0, 0, 2, 3, 2, 0, 0],  //index = 2
+      [0, 0, 2, 3, 2, 1, 0],
+      [0, 0, 2, 3, 3, 2, 0],
+      [0, 0, 1, 2, 3, 2, 0],
+      [0, 0, 0, 1, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+   [                          //   *
+      [0, 0, 0, 0, 0, 0, 0],  // * * * *
+      [0, 0, 1, 2, 1, 0, 0],  //index = 3
+      [0, 1, 2, 3, 2, 2, 1],
+      [0, 2, 3, 3, 3, 3, 2],
+      [0, 1, 2, 2, 2, 2, 1],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+   [                         //   *
+      [0, 0, 0, 0, 0, 0, 0], // * * *
+      [0, 0, 1, 2, 1, 0, 0], //     *
+      [0, 1, 2, 3, 2, 1, 0], //index = 4
+      [0, 2, 3, 3, 3, 2, 0],
+      [0, 1, 2, 2, 3, 2, 0],
+      [0, 0, 0, 1, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+   [                         //   *
+      [0, 0, 0, 0, 0, 0, 0], // * * *
+      [0, 0, 1, 2, 1, 0, 0], //   *
+      [0, 1, 2, 3, 2, 1, 0], //index = 5
+      [0, 2, 3, 3, 3, 2, 0],
+      [0, 1, 2, 3, 2, 1, 0],
       [0, 0, 1, 2, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+   [                         // * * *
+      [0, 0, 0, 0, 0, 0, 0], // *   *
+      [0, 0, 0, 0, 0, 0, 0], //index = 6
+      [0, 1, 2, 2, 2, 1, 0],
+      [0, 2, 3, 3, 3, 2, 0],
+      [0, 2, 3, 2, 3, 2, 0],
+      [0, 1, 2, 1, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+   [                         //   * *
+      [0, 0, 0, 0, 0, 0, 0], // * * *
+      [0, 0, 0, 0, 0, 0, 0], //index = 7
+      [0, 1, 2, 2, 2, 1, 0],
+      [0, 2, 3, 3, 3, 2, 0],
+      [0, 1, 2, 3, 3, 2, 0],
+      [0, 0, 1, 2, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+   [                         //     *
+      [0, 0, 0, 0, 0, 0, 0], //   * *
+      [0, 0, 0, 1, 2, 1, 0], // * *
+      [0, 0, 1, 2, 3, 2, 0], //index = 8
+      [0, 1, 2, 3, 3, 2, 0],
+      [0, 2, 3, 3, 2, 1, 0],
+      [0, 1, 2, 2, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+   [                         // *
+      [0, 0, 0, 0, 0, 0, 0], // * * *
+      [0, 0, 1, 2, 1, 0, 0], // *
+      [0, 0, 2, 3, 2, 0, 0], //index = 9
+      [0, 1, 2, 3, 2, 1, 0],
+      [0, 2, 3, 3, 3, 2, 0],
+      [0, 1, 2, 2, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+    [                        // *
+      [0, 0, 1, 2, 1, 0, 0], // *
+      [0, 0, 2, 3, 2, 0, 0], // * * *
+      [0, 0, 2, 3, 2, 2, 1], //index = 10
+      [0, 0, 2, 3, 3, 3, 2],
+      [0, 0, 1, 2, 2, 2, 1],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+    [                        // *
+      [0, 0, 0, 0, 0, 0, 0], // * * *
+      [0, 0, 1, 2, 2, 1, 0], //     *
+      [0, 0, 2, 3, 3, 2, 0], //index = 11
+      [0, 1, 2, 3, 2, 1, 0],
+      [0, 2, 3, 3, 2, 0, 0],
+      [0, 1, 2, 2, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+         
+         
+    [                        // * * * *
+      [0, 0, 1, 2, 1, 0, 0], // 
+      [0, 0, 2, 3, 2, 0, 0], //index = 12 
+      [0, 0, 2, 3, 2, 0, 0],
+      [0, 0, 2, 3, 2, 0, 0], 
       [0, 0, 2, 3, 2, 0, 0],
       [0, 0, 1, 2, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+        
+    [                        // * *
+      [0, 0, 0, 0, 0, 0, 0], //   * *
+      [0, 0, 1, 2, 2, 1, 0], //index = 13 
+      [0, 1, 2, 3, 3, 2, 0],
+      [0, 2, 3, 3, 2, 1, 0], 
+      [0, 1, 2, 2, 1, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0]];
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+        
+    [                        //  * *
+      [0, 0, 0, 0, 0, 0, 0], //  * *
+      [0, 1, 2, 2, 1, 0, 0], //index = 14 
+      [0, 2, 3, 3, 2, 0, 0],
+      [0, 2, 3, 3, 2, 0, 0], 
+      [0, 1, 2, 2, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+        
+    [                        //   *
+      [0, 0, 0, 0, 0, 0, 0], // * * *
+      [0, 0, 1, 2, 1, 0, 0], //index = 15
+      [0, 1, 2, 3, 2, 1, 0],
+      [0, 2, 3, 3, 3, 2, 0], 
+      [0, 1, 2, 2, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+        
+    [                        // * * * 
+      [0, 0, 0, 0, 0, 0, 0], //     *
+      [0, 0, 0, 0, 0, 0, 0], //index = 16
+      [0, 1, 2, 2, 2, 2, 0],
+      [0, 2, 3, 3, 3, 2, 0], 
+      [0, 1, 2, 2, 3, 2, 0],
+      [0, 0, 0, 1, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+        
+    [                         
+      [0, 0, 0, 0, 0, 0, 0], // * * *
+      [0, 0, 0, 0, 0, 0, 0], //index = 17
+      [0, 1, 2, 2, 2, 1, 0],
+      [0, 2, 3, 3, 3, 2, 0], 
+      [0, 1, 2, 2, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+        
+    [                        // *
+      [0, 0, 0, 0, 0, 0, 0], // * *
+      [0, 0, 1, 2, 1, 0, 0], //index = 18
+      [0, 0, 2, 3, 2, 1, 0],
+      [0, 0, 2, 3, 3, 2, 0], 
+      [0, 0, 1, 2, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+        
+    [                        
+      [0, 0, 0, 0, 0, 0, 0], // * * 
+      [0, 0, 1, 2, 1, 0, 0], //index = 19 
+      [0, 0, 2, 3, 2, 0, 0],
+      [0, 0, 2, 3, 2, 0, 0], 
+      [0, 0, 1, 2, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ],
+        
+    [                        // *
+      [0, 0, 0, 0, 0, 0, 0], // 
+      [0, 0, 0, 0, 0, 0, 0], //index = 20 
+      [0, 0, 1, 2, 1, 0, 0],
+      [0, 0, 2, 3, 2, 0, 0], 
+      [0, 0, 1, 2, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+   ]
+]  
 
+var piece3 = [  
+      [0, 0, 0, 0, 0, 0, 0], // * * * * *
+      [0, 1, 2, 1, 0, 0, 0], //index = 0
+      [0, 2, 3, 2, 2, 1, 0],
+      [0, 2, 3, 3, 3, 2, 0],
+      [0, 1, 2, 2, 3, 2, 0],
+      [0, 0, 0, 1, 2, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+];
 
 var setGameBoard = function(){
 	
 	//sets up arrays, appends 22 "squares" to each row and column
-	for (var i = 0; i < 22; i++){
+	for (var i = 0; i < 20; i++){
 		gameBoard[i] = []
-		for (var j = 0; j < 22; j++){
+		for (var j = 0; j < 20; j++){
 			gameBoard[i][j] = null;
-			var gameTile = $("<div class='game-tile' id='square" + i + "-" + j + "'></div>");
-			$("#game-stats-container").append(gameTile);
-
-			// colors the unplayable arrays, make same color as bg l8r
-			if (i === 0 || i === 21 || j === 0 || j === 21) {
-
-				var targetSquareDiv = "#square" + i + "-" + j;
-				$(targetSquareDiv).css("background-color", "black");
-				$(targetSquareDiv).css("border","none");
-				$(targetSquareDiv).addClass("border")
-				console.log(targetSquareDiv);
-			}
+			var gameTile = $("<div class='game-tile' id='" + i + "_" + j + "'></div>");
+			$("#game-board").append(gameTile);
 		}
 	}
-
-	// sets the values of the corners to make them playable
-	//need to append classes to them later to make them color specific
-	gameBoard[0][0] = 1;
-	gameBoard[0][21] = 1;
-	gameBoard[21][0] = 1;
-	gameBoard[21][21] = 1;
 }
 
 //checks if it is a valid move or not
@@ -54,35 +250,57 @@ var validMove = function() {
 
 }
 
-var gameBoard = [];
+var getBlockPiece = function(i){
+	// return gamePiece[i];
+}
 
+var playBlokus = function() {
+	// var blockPiece = getBlockPiece(i);
+
+	$(".game-tile").hover(function() {
+		$(this).addClass("hovered");
+	}, function() {	
+		$( this ).removeClass("hovered");
+	});
+
+	//.offset() ? 
+	$(".game-tile").on("click", function(){ 
+		var coordinates = $( this ).attr("id").split("_");
+
+		console.log(coordinates);
+		for (var x = 0; x < piece3.length; x ++){
+			for (var y = 0; y < piece3.length; y++){
+				if(piece3[x][y] === 3){
+					var xOnTheBoard = parseInt(coordinates[0]) + x - 3;
+					var yOnTheBoard = parseInt(coordinates[1]) + y - 2;
+					var coordinatesOnTheBoard = xOnTheBoard + "_" + yOnTheBoard;
+					var search = "#" + coordinatesOnTheBoard
+					$(search).css("background-color", "blue");
+					
+
+					console.log(coordinatesOnTheBoard);
+
+
+					$(coordinatesOnTheBoard).css("background-color", "blue");
+				}
+			}
+		}
+		
+	});
+}
+
+
+var gameBoard = [];
 
 $(document).ready(function(){
 
 	setGameBoard();
 
-
-	$(".game-tile").hover(function() {
-		if (!$( this ).hasClass("border")){
-			$(this).css("background-color", "red");
-		}
-	}, function() {
-		if (!$( this ).hasClass("border")){
-			$( this ).css("background-color", "");
-		}
-	});
-
-	$(".game-tile").on("click", function(){ 
-		if (!$( this ).hasClass("border")){
-			$( this ).css("background-color", "blue");
-		}
-	});
+	//highlights the piece over the location
+	playBlokus();
 
 	
-	//why do I need css.style here? it works without everywhere else
 	
-	// $("#left-side").click(function(){
-
 	// })
 	// $.ajax(
 	// 	"./blokus-pieces.js",
@@ -96,10 +314,5 @@ $(document).ready(function(){
 	// 		}
 	// 	}
 	// );
-
-
-
-// console.log(gameBoard);
-//play a piece condition / function
 
 });
