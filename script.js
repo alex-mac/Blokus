@@ -1,9 +1,9 @@
 var piece1 = [  
       [0, 0, 0, 0, 0, 0, 0], // * * * * *
       [0, 0, 0, 0, 0, 0, 0], //index = 0
-      [1, 2, 2, 2, 2, 2, 1],
-      [2, 3, 3, 3, 3, 3, 2],
-      [1, 2, 2, 2, 2, 2, 1],
+      [0, 0, 1, 2, 1, 0, 0],
+      [0, 0, 2, 3, 2, 0, 0],
+      [0, 0, 1, 2, 1, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]];
 
@@ -61,15 +61,25 @@ $(document).ready(function(){
 
 	setGameBoard();
 
+
 	$(".game-tile").hover(function() {
 		if (!$( this ).hasClass("border")){
 			$(this).css("background-color", "red");
 		}
 	}, function() {
 		if (!$( this ).hasClass("border")){
-			$( this ).css("background-color", "white");
+			$( this ).css("background-color", "");
 		}
 	});
+
+	$(".game-tile").on("click", function(){ 
+		if (!$( this ).hasClass("border")){
+			$( this ).css("background-color", "blue");
+		}
+	});
+
+	
+	//why do I need css.style here? it works without everywhere else
 	
 	// $("#left-side").click(function(){
 
