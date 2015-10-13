@@ -210,9 +210,8 @@ var gamePiece = [
    ]
 ]  
 
+//sets up arrays, appends 20 "squares" to each row and column
 var setGameBoard = function(){
-	
-	//sets up arrays, appends 20 "squares" to each row and column
 	for (var i = 0; i < 20; i++){
 		gameBoard[i] = []
 		for (var j = 0; j < 20; j++){
@@ -228,19 +227,30 @@ var createShadow = function(shape, location){
 	var index = arr1[1];
 	var thisArray = gamePiece[index];
 
-	// var coordinates = $( this ).attr("id").split("_")
+	//creates an array with the mouse's relative location, assigns them to values
+	var arr2 = location.split('_')
+	var row = arr2[0];
+	var column = arr2[1];
+
+	var shadow = [];
+	//loops through the array of the selected shape
 	for (var x = 0; x < 7; x ++){
+		var count = 0;
 		for (var y = 0; y < 7; y++){
 			if(thisArray[x][y] === 3){
 
-				//get coordinates of where the mouse is
-				var xOnTheBoard = parseInt(location);
-				var yOnTheBoard = parseInt(location);
+				var xOnTheBoard = parseInt(row) + count;
+				var yOnTheBoard = parseInt(column);
 				var coordinatesOnTheBoard = "#" + xOnTheBoard + "_" + yOnTheBoard;
+				shadow.push(coordinatesOnTheBoard);
 				console.log(coordinatesOnTheBoard);
-				// $(coordinatesOnTheBoard).addClass("hovered");
+				count++;
 			}
 		}
+	}
+
+	for (var i = 0; i < shadow.length; i++){
+		$(shadow[i]).addClass("hovered");
 	}	
 };
 
