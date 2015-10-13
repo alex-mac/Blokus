@@ -233,29 +233,12 @@ var setGameBoard = function(){
 		}
 	}
 }
-
-//checks if it is a valid move or not
-var validMove = function() {
-	// conditions to make a move:
-		// none of the blocks are taken (3's position must be null for all 3s)
-		// sides can't be touching same color
-		// corners must match color
-
-
-	// if corners (1) match with another corner (1)
-		// and sides (2) aren't touching other sides (2)
-		// and your pieces (3) are ONLY over nulls in the array
-		// 
-		//  then return true
-
-}
-
-var getBlockPiece = function(i){
-	// return gamePiece[i];
-}
-
+	
 var playBlokus = function() {
-	// var blockPiece = getBlockPiece(i);
+	$(".game-piece").click(function(){
+		
+	})
+
 
 	$(".game-tile").hover(function() {
 		$(this).addClass("hovered");
@@ -296,23 +279,5 @@ $(document).ready(function(){
 
 	setGameBoard();
 
-	//highlights the piece over the location
 	playBlokus();
-
-	
-	
-	// })
-	// $.ajax(
-	// 	"./blokus-pieces.js",
-	// 	{
-	// 		method:"GET", 
-	// 		success: function(data, textString, garbage){
-	// 			var shapesArray = data;
-	// 			for (var i = 0; i < shapesArray.length; i++){
-	// 				console.log(shapesArray[i]);
-	// 			}
-	// 		}
-	// 	}
-	// );
-
 });

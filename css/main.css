@@ -1,15 +1,18 @@
 #game-board{
-	height: 602px;
-	width: 602px;
+	height: 702px;
+	width: 702px;
 	border: 1px solid black;
-	margin: 0 auto;
-	margin-top: 40px;
+	margin-top: -15px;
+	margin-right: 45px;
+	float: right;
 }
 
 #left-side {
-	height: 500px;
-	width: 395px;
+	height: 550px;
+	width: 500px;
 	border: 1px solid green;
+	margin-top: 130px;
+	margin-left: 40px;
 	float: left;
 }
 
@@ -17,16 +20,16 @@
 	float: left;
 	font-size: 0;
 	display: inline-block;
-	height: 30px;
-	width: 30px;
+	height: 35px;
+	width: 35px;
 	border: 1px solid gray;
 }
 
 .container {
 	border: 1px solid black;
 	height: 800px;
-	width: 1600px;
-
+	width: 1375px;
+	margin: 25px;
 }
 
 .hovered {
@@ -40,15 +43,87 @@
   background-image: url('../images/Blokus-pieces-25.png');
   background-repeat: no-repeat;
   display: inline-block;
-  margin: 10px;
+  margin: 10px 0px 0px 20px;
+
+}
+
+.piece-00{
+	height: 120px;
+	width: 40px;
+	background-position: -475px -105px;
 }
 
 .piece-01{
+	height: 70px;
+	width: 110px;
+	background-position: 10px -120px;
+}
+
+.piece-02{
+	height: 60px;
+	width: 110px;
+	background-position: -275px -125px;
+}
+
+.piece-03{
+	height: 70px;
+	width: 100px;
+	background-position: -410px -210px;
+}
+
+.piece-04{
+	height: 80px;
+	width: 80px;
+	background-position: -230px -190px;
+}
+
+.piece-05{
+	height: 80px;
+	width: 80px;
+	background-position: -320px -190px;
+}
+
+.piece-06{
+	height: 80px;
+	width: 60px;
+	background-position: -145px -190px;
+}
+
+.piece-07{
+	height: 80px;
+	width: 65px;
+	background-position: 10px -190px;
+}
+
+.piece-08{
+	height: 80px;
+	width: 80px;
+	background-position: -60px -190px;
+}
+
+.piece-09{
+	height: 90px;
+	width: 90px;
+	background-position: -100px -100px;
+}
+
+.piece-10{
+	height: 90px;
+	width: 80px;
+	background-position: -190px -100px;
+}
+
+.piece-11{
+	height: 85px;
+	width: 85px;
+	background-position: -385px -100px;
+}
+
+.piece-12{
 	height: 40px;
 	width: 110px;
 	background-position: -185px -55px;
 }
-
 
 .piece-13{
 	height: 70px;
