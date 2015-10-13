@@ -212,121 +212,96 @@ var gamePiece = [
 
 //sets up arrays, appends 20 "squares" to each row and column
 var setGameBoard = function(){
+	//columns
 	for (var i = 0; i < 20; i++){
 		gameBoard[i] = []
+		//rows
 		for (var j = 0; j < 20; j++){
 			gameBoard[i][j] = null;
+			//y and x in ids
 			var gameTile = $("<div class='game-tile' id='" + i + "_" + j + "'></div>");
 			$("#game-board").append(gameTile);
 		}
 	}
+
+	$("#19_0").css("background-color", "red");
+	$("#0_0").css("background-color", "yellow");
+	$("#0_19").css("background-color", "green");
+	$("#19_19").css("background-color", "blue");
+
 }
 
-var createShadow = function(shape, location){
+var getPiece = function() {
+
+	
+}
+
+var getIndex = function () {
+	
+}
+var getShadow = function(shape, location){
+
+	//gets the specific game piece
 	var arr1 = shape.split('-');
 	var index = arr1[1];
-	var thisArray = gamePiece[index];
+	var thisArray = gamePiece[index]; // works gets a index 0-20
 
 	//creates an array with the mouse's relative location, assigns them to values
 	var arr2 = location.split('_')
-	var row = arr2[0];
-	var column = arr2[1];
+	var currentMousePositionRow = arr2[0];
+	var currentMousePositionColumn = arr2[1]; // logic is sound
 
 	var shadow = [];
-	//loops through the array of the selected shape
-	for (var x = 0; x < 7; x ++){
-		var count = 0;
-		for (var y = 0; y < 7; y++){
-			if(thisArray[x][y] === 3){
+	//loops through the arrays of the selected shape
+	for (var pieceArrayRow = 0; pieceArrayRow < 7; pieceArrayRow ++){
+		for (var pieceArrayColumn = 0; pieceArrayColumn < 7; pieceArrayColumn++){
+			//checks if it is a valid shape on the bloc (value of 3)
+			if(thisArray[pieceArrayRow][pieceArrayColumn] == 3){
 
-				var xOnTheBoard = parseInt(row) + count;
-				var yOnTheBoard = parseInt(column);
-				var coordinatesOnTheBoard = "#" + xOnTheBoard + "_" + yOnTheBoard;
-				shadow.push(coordinatesOnTheBoard);
-				console.log(coordinatesOnTheBoard);
-				count++;
+				//adds the position in the array to the position on the board
+				var columnOffset = parseInt(pieceArrayRow) + parseInt(currentMousePositionRow) - Math.floor(thisArray.length / 2);
+				var rowOffset = parseInt(pieceArrayColumn) + parseInt(currentMousePositionColumn) - Math.floor(thisArray.length / 2);
+				
+				var makeThisIdChangeColorFinally = ("#" + columnOffset + "_" + rowOffset);
+				shadow.push(makeThisIdChangeColorFinally);
 			}
 		}
 	}
 
-	for (var i = 0; i < shadow.length; i++){
-		$(shadow[i]).addClass("hovered");
-	}	
+	return shadow;
 };
 
-
-
-	// var coordinates = $( this ).attr("id").split("_");
-
-	// 	console.log(coordinates);
-	// 	for (var x = 0; x < piece3.length; x ++){
-	// 		for (var y = 0; y < piece3.length; y++){
-	// 			if(piece3[x][y] === 3){
-	// 				var xOnTheBoard = parseInt(coordinates[0]) + x - 3;
-	// 				var yOnTheBoard = parseInt(coordinates[1]) + y - 2;
-	// 				var coordinatesOnTheBoard = xOnTheBoard + "_" + yOnTheBoard;
-	// 				var search = "#" + coordinatesOnTheBoard
-	// 				$(search).css("background-color", "blue");
-					
-
-	// 				console.log(coordinatesOnTheBoard);
-
-
-	// 				$(coordinatesOnTheBoard).css("background-color", "blue");
-	// 			}
-	// 		}
-// }
 	
 var playBlokus = function() {
 	//listens for a click event
 	$(".game-piece").click(function(){
-		//gets ID of the piece clicked
+		//gets ID of the piece clicked css**
 		var thisPieceID = $( this ).attr('id');
+
 
 		$(".game-tile").hover(function() {
 			var currentLocation = $( this ).attr('id');
+		
+			shadowStates[1] = getShadow(thisPieceID, currentLocation);
 
-			createShadow(thisPieceID, currentLocation);
+			var thisShadow = shadowStates[1]
+			for (var i = 0; i < thisShadow.length; i++){
+				$( thisShadow[i] ).addClass("hovered");
+			}
+			shadowStates[0] = thisShadow;
 		}, function() {	
-			$( this ).removeClass("hovered");
+
+			var anotherShadow = shadowStates[0]
+			for (var i = 0; i < anotherShadow.length; i++){
+				$( anotherShadow[i] ).removeClass("hovered");
+			}
+
 		});
 	})
-
-
-	// $(".game-tile").hover(function() {
-	// 	$(this).addClass("hovered");
-	// }, function() {	
-	// 	$( this ).removeClass("hovered");
-	// });
-
-	//.offset() ? 
-	// $(".game-tile").on("click", function(){ 
-	// 	var coordinates = $( this ).attr("id").split("_");
-
-	// 	console.log(coordinates);
-	// 	for (var x = 0; x < piece3.length; x ++){
-	// 		for (var y = 0; y < piece3.length; y++){
-	// 			if(piece3[x][y] === 3){
-	// 				var xOnTheBoard = parseInt(coordinates[0]) + x - 3;
-	// 				var yOnTheBoard = parseInt(coordinates[1]) + y - 2;
-	// 				var coordinatesOnTheBoard = xOnTheBoard + "_" + yOnTheBoard;
-	// 				var search = "#" + coordinatesOnTheBoard
-	// 				$(search).css("background-color", "blue");
-					
-
-	// 				console.log(coordinatesOnTheBoard);
-
-
-	// 				$(coordinatesOnTheBoard).css("background-color", "blue");
-	// 			}
-	// 		}
-	// 	}
-		
-	// }); 
 }
 
-
 var gameBoard = [];
+var shadowStates = [null, null];
 
 $(document).ready(function(){
 

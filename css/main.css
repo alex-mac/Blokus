@@ -1,3 +1,7 @@
+body {
+	background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/gplaypattern.png");
+}
+
 #game-board{
 	height: 702px;
 	width: 702px;
@@ -22,7 +26,8 @@
 	display: inline-block;
 	height: 35px;
 	width: 35px;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
+	background-color: white;
 }
 
 .container {
@@ -36,8 +41,8 @@
 	background-color: red;
 }
 
-#piece-00, #piece-01, #piece-02, #piece-03, #piece-04, #piece-05, #piece-06, #piece-07, 
-#piece-08, #piece-09, #piece-10, #piece-11, #piece-12, #piece-13, #piece-14, #piece-15, 
+#piece-0, #piece-1, #piece-2, #piece-3, #piece-4, #piece-5, #piece-6, #piece-7, 
+#piece-8, #piece-9, #piece-10, #piece-11, #piece-12, #piece-13, #piece-14, #piece-15, 
 #piece-16, #piece-17, #piece-18, #piece-19, #piece-20 
 {
   background-image: url('../images/Blokus-pieces-25.png');
@@ -53,55 +58,55 @@
 	background-position: -475px -105px;
 }
 
-#piece-01{
+#piece-1{
 	height: 70px;
 	width: 110px;
 	background-position: 10px -120px;
 }
 
-#piece-02{
+#piece-2{
 	height: 60px;
 	width: 110px;
 	background-position: -275px -125px;
 }
 
-#piece-03{
+#piece-3{
 	height: 70px;
 	width: 100px;
 	background-position: -410px -210px;
 }
 
-#piece-04{
+#piece-4{
 	height: 80px;
 	width: 80px;
 	background-position: -230px -190px;
 }
 
-#piece-05{
+#piece-5{
 	height: 80px;
 	width: 80px;
 	background-position: -320px -190px;
 }
 
-#piece-06{
+#piece-6{
 	height: 80px;
 	width: 60px;
 	background-position: -145px -190px;
 }
 
-#piece-07{
+#piece-7{
 	height: 80px;
 	width: 65px;
 	background-position: 10px -190px;
 }
 
-#piece-08{
+#piece-8{
 	height: 80px;
 	width: 80px;
 	background-position: -60px -190px;
 }
 
-#piece-09{
+#piece-9{
 	height: 90px;
 	width: 90px;
 	background-position: -100px -100px;
