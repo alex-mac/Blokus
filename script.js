@@ -219,40 +219,21 @@ var setGameBoard = function(){
 		for (var j = 0; j < 20; j++){
 			gameBoard[i][j] = null;
 			//y and x in ids
-			var gameTile = $("<div class='game-tile' id='" + i + "_" + j + "'></div>");
+			var gameTile = $("<div class='game-tile' id='" + i + "-" + j + "'></div>");
 			$("#game-board").append(gameTile);
 		}
 	}
 
-	$("#19_0").css("background-color", "red");
-	$("#0_0").css("background-color", "yellow");
-	$("#0_19").css("background-color", "green");
-	$("#19_19").css("background-color", "blue");
+	$("#19-0").css("background-color", "red");
+	$("#0-0").css("background-color", "yellow");
+	$("#0-19").css("background-color", "green");
+	$("#19-19").css("background-color", "blue");
 
 }
 
-var getPiece = function() {
 
-	
-}
-
-var getIndex = function () {
-	
-}
-var getShadow = function(shape, location){
-
-	//gets the specific game piece
-	var arr1 = shape.split('-');
-	var index = arr1[1];
-	var thisArray = gamePiece[index]; // works gets a index 0-20
-
-	//creates an array with the mouse's relative location, assigns them to values
-	var arr2 = location.split('_')
-	var currentMousePositionRow = arr2[0];
-	var currentMousePositionColumn = arr2[1]; // logic is sound
-
-	var shadow = [];
-	//loops through the arrays of the selected shape
+var getPiece = function(thisArray, currentMousePositionRow, currentMousePositionColumn) {
+	var pieceShape = [];
 	for (var pieceArrayRow = 0; pieceArrayRow < 7; pieceArrayRow ++){
 		for (var pieceArrayColumn = 0; pieceArrayColumn < 7; pieceArrayColumn++){
 			//checks if it is a valid shape on the bloc (value of 3)
@@ -262,18 +243,33 @@ var getShadow = function(shape, location){
 				var columnOffset = parseInt(pieceArrayRow) + parseInt(currentMousePositionRow) - Math.floor(thisArray.length / 2);
 				var rowOffset = parseInt(pieceArrayColumn) + parseInt(currentMousePositionColumn) - Math.floor(thisArray.length / 2);
 				
-				var makeThisIdChangeColorFinally = ("#" + columnOffset + "_" + rowOffset);
-				shadow.push(makeThisIdChangeColorFinally);
+				var makeThisIdChangeColorFinally = ("#" + columnOffset + "-" + rowOffset);
+				pieceShape.push(makeThisIdChangeColorFinally);
 			}
 		}
 	}
+	return pieceShape;
+};
 
-	return shadow;
+var getShadow = function(shape, location){
+
+	//gets the specific game pie,ce
+	var arr1 = shape.split('-');
+		index = arr1[1],
+		thisArray = gamePiece[index]; // works gets a index 0-20
+
+	//creates an array with the mouse's relative location, assigns them to values
+	var arr2 = location.split('-'),
+		currentMousePositionRow = arr2[0],
+		currentMousePositionColumn = arr2[1]; // logic is sound
+
+	return getPiece(thisArray, currentMousePositionRow, currentMousePositionColumn);
 };
 
 	
 var playBlokus = function() {
 	//listens for a click event
+	
 	$(".game-piece").click(function(){
 		//gets ID of the piece clicked css**
 		var thisPieceID = $( this ).attr('id');
@@ -286,6 +282,7 @@ var playBlokus = function() {
 
 			var thisShadow = shadowStates[1]
 			for (var i = 0; i < thisShadow.length; i++){
+				//if val = 3
 				$( thisShadow[i] ).addClass("hovered");
 			}
 			shadowStates[0] = thisShadow;
@@ -295,9 +292,19 @@ var playBlokus = function() {
 			for (var i = 0; i < anotherShadow.length; i++){
 				$( anotherShadow[i] ).removeClass("hovered");
 			}
-
 		});
-	})
+	});
+
+	$(".game-tile").click(function() {
+
+		var thisShadow = shadowStates[1]
+		
+		for (var i = 0; i < thisShadow.length; i++){
+			//if val = 3
+			$( thisShadow[i] ).val(3);
+			$( thisShadow[i] ).css("background-color", "red");
+		}
+	});
 }
 
 var gameBoard = [];
