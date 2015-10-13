@@ -26,7 +26,7 @@
 }
 
 .container {
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	height: 800px;
 	width: 1375px;
 	margin: 25px;
@@ -36,9 +36,9 @@
 	background-color: red;
 }
 
-.piece-00, .piece-01, .piece-02, .piece-03, .piece-04, .piece-05, .piece-06, .piece-07, 
-.piece-08, .piece-09, .piece-10, .piece-11, .piece-12, .piece-13, .piece-14, .piece-15, 
-.piece-16, .piece-17, .piece-18, .piece-19, .piece-20 
+#piece-00, #piece-01, #piece-02, #piece-03, #piece-04, #piece-05, #piece-06, #piece-07, 
+#piece-08, #piece-09, #piece-10, #piece-11, #piece-12, #piece-13, #piece-14, #piece-15, 
+#piece-16, #piece-17, #piece-18, #piece-19, #piece-20 
 {
   background-image: url('../images/Blokus-pieces-25.png');
   background-repeat: no-repeat;
@@ -47,127 +47,127 @@
 
 }
 
-.piece-00{
+#piece-00{
 	height: 120px;
 	width: 40px;
 	background-position: -475px -105px;
 }
 
-.piece-01{
+#piece-01{
 	height: 70px;
 	width: 110px;
 	background-position: 10px -120px;
 }
 
-.piece-02{
+#piece-02{
 	height: 60px;
 	width: 110px;
 	background-position: -275px -125px;
 }
 
-.piece-03{
+#piece-03{
 	height: 70px;
 	width: 100px;
 	background-position: -410px -210px;
 }
 
-.piece-04{
+#piece-04{
 	height: 80px;
 	width: 80px;
 	background-position: -230px -190px;
 }
 
-.piece-05{
+#piece-05{
 	height: 80px;
 	width: 80px;
 	background-position: -320px -190px;
 }
 
-.piece-06{
+#piece-06{
 	height: 80px;
 	width: 60px;
 	background-position: -145px -190px;
 }
 
-.piece-07{
+#piece-07{
 	height: 80px;
 	width: 65px;
 	background-position: 10px -190px;
 }
 
-.piece-08{
+#piece-08{
 	height: 80px;
 	width: 80px;
 	background-position: -60px -190px;
 }
 
-.piece-09{
+#piece-09{
 	height: 90px;
 	width: 90px;
 	background-position: -100px -100px;
 }
 
-.piece-10{
+#piece-10{
 	height: 90px;
 	width: 80px;
 	background-position: -190px -100px;
 }
 
-.piece-11{
+#piece-11{
 	height: 85px;
 	width: 85px;
 	background-position: -385px -100px;
 }
 
-.piece-12{
+#piece-12{
 	height: 40px;
 	width: 110px;
 	background-position: -185px -55px;
 }
 
-.piece-13{
+#piece-13{
 	height: 70px;
 	width: 90px;
 	background-position: -425px -30px;
 }
 
-.piece-14{
+#piece-14{
 	height: 70px;
 	width: 70px;
 	background-position: 10px -30px;
 }
 
-.piece-15{
+#piece-15{
 	height: 70px;
 	width: 80px;
 	background-position: -80px -30px;
 }
 
-.piece-16{
+#piece-16{
 	height: 70px;
 	width: 85px;
 	background-position: -320px -30px;
 }
 
-.piece-17 {
+#piece-17 {
 	height: 40px;
 	width: 82px;
 	background-position: -365px 10px;
 }
 
-.piece-18 {
+#piece-18 {
 	height: 60px;
 	width: 65px;
 	background-position: -255px 10px;
 }
 
-.piece-19 {
+#piece-19 {
 	height: 40px;
 	width: 65px;
 	background-position: -145px 10px;
 }
 
-.piece-20 {
+#piece-20 {
 	height: 40px;
 	width: 36px;
 	background-position: -60px 10px;
