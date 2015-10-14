@@ -16,7 +16,6 @@ body {
 	width: 500px;
 	border: 1px solid green;
 	margin-top: 130px;
-	margin-left: 40px;
 	float: left;
 }
 
@@ -34,13 +33,29 @@ body {
 	/*border: 1px solid black;*/
 	height: 800px;
 	width: 1375px;
-	margin: 25px;
+	margin: 0 auto;
 }
 
 .hovered {
-	background-color: blue;
 	opacity: .5;
 }
+
+.hovered.blue {
+	background-color: blue;
+}
+
+.hovered.yellow {
+	background-color: yellow;
+}
+
+.hovered.red {
+	background-color: red;
+}
+
+.hovered.green {
+	background-color: green;
+}
+
 
 #piece-0, #piece-1, #piece-2, #piece-3, #piece-4, #piece-5, #piece-6, #piece-7, 
 #piece-8, #piece-9, #piece-10, #piece-11, #piece-12, #piece-13, #piece-14, #piece-15, 
