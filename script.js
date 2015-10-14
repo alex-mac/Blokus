@@ -224,13 +224,33 @@ var setGameBoard = function(){
 		}
 	}
 
-	$("#19-0").css("background-color", "red");
+	$("#19-0").css("background-color", "blue");
 	$("#0-0").css("background-color", "yellow");
-	$("#0-19").css("background-color", "green");
-	$("#19-19").css("background-color", "blue");
+	$("#0-19").css("background-color", "red");
+	$("#19-19").css("background-color", "green");
 
 }
 
+var rotatePiece = function(shape){
+	var arr1 = shape.split('-');
+	index = arr1[1],
+	thisArray = gamePiece[index];
+	
+	console.log(thisArray);	
+	var temp = new Array(7);
+
+	for (var i = 0; i < 7; i++){
+		temp[i] = new Array(7);
+		for (var j = 0; j < 7; j++){
+			temp[i][j] = thisArray[temp.length - j - 1][i];
+		}
+	}
+
+	gamePiece[index] = temp;
+	console.log(temp);cc
+	// console.log("rotated array is " + rotatedArray); 
+
+}
 
 var getPiece = function(thisArray, currentMousePositionRow, currentMousePositionColumn) {
 	var pieceShape = [];
@@ -266,53 +286,82 @@ var getShadow = function(shape, location){
 	return getPiece(thisArray, currentMousePositionRow, currentMousePositionColumn);
 };
 
-	
-var playBlokus = function() {
+var playerTurn = function() {
 	//listens for a click event
-	
 	$(".game-piece").click(function(){
 		//gets ID of the piece clicked css**
 		var thisPieceID = $( this ).attr('id');
 
-
+		//adds a "shadow" of the piece before it is played
 		$(".game-tile").hover(function() {
+
 			var currentLocation = $( this ).attr('id');
 		
 			shadowStates[1] = getShadow(thisPieceID, currentLocation);
 
 			var thisShadow = shadowStates[1]
+
+			//the loop that adds the class hover onto the divs in relative to the shape of the
+			//piece that was selected
 			for (var i = 0; i < thisShadow.length; i++){
-				//if val = 3
-				$( thisShadow[i] ).addClass("hovered");
+				if ( !$(thisShadow[i]).hasClass( "occupied" ) ){
+					$( thisShadow[i] ).addClass("hovered");
+				}
 			}
+
 			shadowStates[0] = thisShadow;
+
+		//removes the after shadow of the piece after you move the mouse to another div
 		}, function() {	
 
-			var anotherShadow = shadowStates[0]
-			for (var i = 0; i < anotherShadow.length; i++){
-				$( anotherShadow[i] ).removeClass("hovered");
+			var resetShadow = shadowStates[0]
+			for (var i = 0; i < resetShadow.length; i++){
+				if ( !$(resetShadow[i]).hasClass( "occupied" ) ){
+					$( resetShadow[i] ).removeClass("hovered");
+				}
 			}
 		});
-	});
+		//**************************************
+		$(document).keyup(function(e){
+			if(e.keyCode == 32){
+				rotatePiece(thisPieceID);
+			}
+		});
 
-	$(".game-tile").click(function() {
-
-		var thisShadow = shadowStates[1]
+		//removes all event handlers associated with the class gametile after the player
+		//lifts their mouse
+		$("#game-board").mouseup(function(){
+			$(".game-tile").off();
+			
+			//listens for a click on the gameboard. to try to add a piece onto the gameboard
+			//only works if a piece is selected
 		
-		for (var i = 0; i < thisShadow.length; i++){
-			//if val = 3
-			$( thisShadow[i] ).val(3);
-			$( thisShadow[i] ).css("background-color", "red");
-		}
+			var thisShadow = shadowStates[1]
+			// if (isAValidMove()){
+			for (var i = 0; i < thisShadow.length; i++){
+				
+				$( thisShadow[i] ).addClass('occupied');
+				$( thisShadow[i] ).css('background-color', 'blue')
+				$( thisShadow[i] ).removeClass('hovered'); 
+			}
+			
+		})
+
+		
 	});
+}
+
+
+var playBlokus = function() {
+	playerTurn();
 }
 
 var gameBoard = [];
 var shadowStates = [null, null];
+var score = 89;
 
 $(document).ready(function(){
 
 	setGameBoard();
-
 	playBlokus();
 });

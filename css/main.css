@@ -38,7 +38,8 @@ body {
 }
 
 .hovered {
-	background-color: red;
+	background-color: green;
+	opacity: .5;
 }
 
 #piece-0, #piece-1, #piece-2, #piece-3, #piece-4, #piece-5, #piece-6, #piece-7, 
