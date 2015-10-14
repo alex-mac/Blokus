@@ -301,6 +301,37 @@ var getPiece = function (shape, location){
 	return pieceShape;
 };
 
+//converts an id into an array of 2 numbers: the row and columns.  THE COORDINATES
+var convertToCoordinates = function(string) {
+   if (string.charAt(0) === '#'){
+      string = string.substr(1);
+   }
+   var coordinates = string.split('-');
+   return coordinates;
+}
+
+//checks to see if the value at the square is 3 or not.  if there is a 3 found, return true immediately
+var squareIsTaken = function(){
+   var arr1 = shadowStates[1];
+   for (var i = 0; i < arr1.length; i++){
+      var coordinates = convertToCoordinates(arr1[i]);
+      if (gameBoard[coordinates[0]][coordinates[1]] === 3) {
+         return true;
+      }
+   }
+
+   return false;
+}
+
+var checkForCorners = function() {
+
+};
+
+var addToGameBoard = function(pieceID){
+   var coordinates = convertToCoordinates(pieceID);
+   gameBoard[coordinates[0]][coordinates[1]] = 3;
+}
+
 var playerTurn = function() {
    
    //listens for a click event on the images of the game pieces
@@ -312,13 +343,13 @@ var playerTurn = function() {
       imageClicked = "on";
    });
 
-
+   var currentLocation = null;
    //adds a "shadow" of the piece before it is played on a position relative to the board
    $(".game-tile").hover(function() {
       if (imageClicked === "on"){
       $( ".hovered" ).css("background-color", playerColor[count % 4]);
          //gets ID of the tile that the mouse is hovering over
-         var currentLocation = $( this ).attr('id');
+         currentLocation = $( this ).attr('id'); // made it not declared inside the event.  change here if it messes things up
          
          shadowStates[1] = getPiece(thisPieceID, currentLocation);
 
@@ -361,15 +392,17 @@ var playerTurn = function() {
       }
    });
 
-
       //removes all event handlers associated with the class gametile after the player
       //lifts their mouse
    $("#game-board").mouseup(function(){
       var turn = count % 4;
       if (shadowStates[1].indexOf(playerStart[turn]) == -1 && count < 4){
          alert("Please play in the designated corner for the first move!");
-      // } else if (){  if the value is equal to 3
-      } else{
+      } else if (squareIsTaken() && count >= 4){  
+         alert("Yo playa you already played there");
+      } else if (checkForCorners() && count >= 4) {
+         alert("Home skillet make sure to tap dat corner broski");
+      } else {
             // having trouble getting the on and off to work
          imageClicked = "off";
          
@@ -382,19 +415,18 @@ var playerTurn = function() {
             $( thisShadow[i] ).addClass('occupied');
             $( thisShadow[i] ).css('background-color', playerColor[turn])
             $( thisShadow[i] ).removeClass('hovered');
-            //add value to the gameBoard 
+            addToGameBoard(thisShadow[i]);
          }
-
+         // addValuesToGameBoard(thisPieceID, currentLocation);
          count += 1;
-         console.log("count is: " + count);
-         console.log("turn is: " + turn);
+        
 		}	
 	})		
 };
 
 
 var playBlokus = function() {
-
+   //set up passes here
 	playerTurn();
 }
 
@@ -403,7 +435,6 @@ var gameBoard = [];
 //an array that holds 2 shapes: the current shape location [1] and the previous shape location [0]
 //used to create and erase the shadow of the shape under the mouse as it moves along the board
 var shadowStates = [null, null];
-var player = [0, 1, 2, 3];
 var playerColor = ["blue", "yellow", "red", "green"];
 var playerStart = ["#19-0", "#0-0", "#0-19", "#19-19"];
 var count = 0;
@@ -416,4 +447,3 @@ $(document).ready(function(){
 	setGameBoard();
 	playBlokus();
 });
-
