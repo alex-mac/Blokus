@@ -331,45 +331,43 @@ var playerTurn = function() {
 	  }
    });
 		
-		$(document).keyup(function(e){
+	$(document).keyup(function(e){
          // if shadowStates[1].indexOf('position') > -1
-			if(e.keyCode == 65){ //pressing a 
-				rotatePiece(thisPieceID);
-			}
-		});
+		if(e.keyCode == 65){ //pressing a 
+			rotatePiece(thisPieceID);
+		}
+	});
 
 		//removes all event handlers associated with the class gametile after the player
 		//lifts their mouse
-		$("#game-board").mouseup(function(){
-         if (shadowStates[1].indexOf(playerStart[turn]) == -1 && turn < 4){
-            alert("Please play in the designated corner for the first move!");
-         // } else if (){  if the value is equal to 3
-         } else{
-			
+	$("#game-board").mouseup(function(){
+      if (shadowStates[1].indexOf(playerStart[turn]) == -1 && turn < 4){
+         alert("Please play in the designated corner for the first move!");
+      // } else if (){  if the value is equal to 3
+      } else{
+			var turn = count % 4;
             // having trouble getting the on and off to work
-
-			
-			   //listens for a click on the gameboard. to try to add a piece onto the gameboard
-			   //only works if a piece is selected
-		
-		 	   var thisShadow = shadowStates[1]
-			   // if (isAValidMove()){
-			   for (var i = 0; i < thisShadow.length; i++){
-				  $( thisShadow[i] ).addClass('occupied');
-				  $( thisShadow[i] ).css('background-color', playerColor[turn])
-				  $( thisShadow[i] ).removeClass('hovered');
-
+         imageClicked = "off";
+         $( ".hovered" ).css("background-color", playerColor[turn]);
+         
+            //listens for a click on the gameboard. to try to add a piece onto the gameboard
+            //only works if a piece is selected
+      
+         var thisShadow = shadowStates[1]
+            // if (isAValidMove()){
+         for (var i = 0; i < thisShadow.length; i++){
+            $( thisShadow[i] ).addClass('occupied');
+            $( thisShadow[i] ).css('background-color', playerColor[turn])
+            $( thisShadow[i] ).removeClass('hovered');
             //add value to the gameBoard 
+         }
 
-            }
-
-            $( ".hovered" ).css("background-color", playerColor[turn]);
-            count += 1;
-            console.log(turn);
-            console.log(shadowStates[1]);
-			}	
-		})		
-   };
+         count += 1;
+         console.log("count is: " + count);
+         console.log("turn is: " + turn);
+		}	
+	})		
+};
 
 
 var playBlokus = function() {
@@ -385,8 +383,8 @@ var shadowStates = [null, null];
 var player = [0, 1, 2, 3];
 var playerColor = ["blue", "yellow", "red", "green"];
 var playerStart = ["#19-0", "#0-0", "#0-19", "#19-19"];
-var count = 0
-var turn = count % 4;
+var count = 0;
+// if turn is in the root, it only happens once ... place it in the function to have it recalculate
 var imageClicked = "off";
 var thisPieceID = null;
 
@@ -396,104 +394,4 @@ $(document).ready(function(){
 	setGameBoard();
 	playBlokus();
 });
-
-
-
-
-
-
-
-
-// //listens for a click event on the images of the game pieces
-
-//    // cookie = "#19-0";
-
-//    $(".game-piece").click(function(){
-
-//       //gets ID of the image clicked, returns a string ex. piece-11
-//       var thisPieceID = $( this ).attr('id');
-
-//       var imageClicked = "on";
-//    // }
-   
-
-//       //adds a "shadow" of the piece before it is played on a position relative to the board
-//       $(".game-tile").hover(function() {
-
-//          //gets ID of the tile that the mouse is hovering over
-//          var currentLocation = $( this ).attr('id');
-         
-//          shadowStates[1] = getPiece(thisPieceID, currentLocation);
-
-//          var thisShadow = shadowStates[1]
-
-//          //the loop that adds the class hover onto the divs in relative to the shape of the
-//          //piece that was selected
-//          for (var i = 0; i < thisShadow.length; i++){
-//             if ( !$(thisShadow[i]).hasClass( "occupied" ) ){
-//                $( thisShadow[i] ).addClass("hovered");
-//             }
-//          }
-
-//          shadowStates[0] = thisShadow;
-
-//       //removes the after shadow of the piece after you move the mouse to another div
-//       }, function() {   
-
-//          var resetShadow = shadowStates[0]
-//          for (var i = 0; i < resetShadow.length; i++){
-//             if ( !$(resetShadow[i]).hasClass( "occupied" ) ){
-//                $( resetShadow[i] ).removeClass("hovered");
-//             }
-//          }
-//       });
-      
-//       $(document).keyup(function(e){
-//          // if shadowStates[1].indexOf('position') > -1
-//          if(e.keyCode == 32){
-//             rotatePiece(thisPieceID);
-//          }
-//       });
-
-//       //removes all event handlers associated with the class gametile after the player
-//       //lifts their mouse
-//       $("#game-board").mouseup(function(){
-//          if (shadowStates[1].indexOf(playerStart[turn]) == -1 && turn < 4){
-//             alert("Please play in the designated corner for the first move!");
-//          // } else if (){  if the value is equal to 3
-//          } else{
-         
-//             $(".game-tile").off();
-
-//             // having trouble getting the on and off to work
-
-         
-//             //listens for a click on the gameboard. to try to add a piece onto the gameboard
-//             //only works if a piece is selected
-      
-//             var thisShadow = shadowStates[1]
-//             // if (isAValidMove()){
-//             for (var i = 0; i < thisShadow.length; i++){
-//               $( thisShadow[i] ).addClass('occupied');
-//               $( thisShadow[i] ).css('background-color', playerColor[turn])
-//               $( thisShadow[i] ).removeClass('hovered');
-
-//             //add value to the gameBoard 
-
-//             }
-
-//             $( ".hovered" ).css("background-color", playerColor[turn]);
-//             count += 1;
-//             console.log(turn);
-//             console.log(shadowStates[1]);
-//          }  
-//       })    
-//    });
-
-
-
-
-
-
-
 
