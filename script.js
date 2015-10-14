@@ -234,34 +234,48 @@ var setGameBoard = function(){
 var rotatePiece = function(shape){
 	var arr1 = shape.split('-');
 	index = arr1[1],
-	thisArray = gamePiece[index];
+	dummyArray = gamePiece[index];
 	
-	console.log(thisArray);	
+	console.log(dummyArray);	
 	var temp = new Array(7);
 
 	for (var i = 0; i < 7; i++){
 		temp[i] = new Array(7);
 		for (var j = 0; j < 7; j++){
-			temp[i][j] = thisArray[temp.length - j - 1][i];
+			temp[i][j] = dummyArray[temp.length - j - 1][i];
 		}
 	}
 
+	// replaces the original array with the rotated array ... for now ...
 	gamePiece[index] = temp;
-	console.log(temp);cc
-	// console.log("rotated array is " + rotatedArray); 
 
 }
 
-var getPiece = function(thisArray, currentMousePositionRow, currentMousePositionColumn) {
+var convertToArray = function(array, index) {
+	var arr1 = array.split('-');
+	return arr1[index];
+}
+
+var getPiece = function (shape, location){
+	//gets the specific game piece from the array of 21 game pieces
+	var index = convertToArray(shape, 1),
+	currentMouseRow = convertToArray(location, 0),
+	currentMouseColumn = convertToArray(location, 1),
+	
+	//clones the array of the shape, defensive copying
+	dummyArray = gamePiece[index]; // works gets a index 0-20
+
+// var getPiece = function(dummyArray, currentMouseRow, currentMouseColumn) {
 	var pieceShape = [];
 	for (var pieceArrayRow = 0; pieceArrayRow < 7; pieceArrayRow ++){
 		for (var pieceArrayColumn = 0; pieceArrayColumn < 7; pieceArrayColumn++){
 			//checks if it is a valid shape on the bloc (value of 3)
-			if(thisArray[pieceArrayRow][pieceArrayColumn] == 3){
+			if(dummyArray[pieceArrayRow][pieceArrayColumn] == 3){
 
-				//adds the position in the array to the position on the board
-				var columnOffset = parseInt(pieceArrayRow) + parseInt(currentMousePositionRow) - Math.floor(thisArray.length / 2);
-				var rowOffset = parseInt(pieceArrayColumn) + parseInt(currentMousePositionColumn) - Math.floor(thisArray.length / 2);
+				//adds the position in the array to the position on the board, the -math is to get the starting position to the center
+				//of the 7x7 dummyArray
+				var columnOffset = parseInt(pieceArrayRow) + parseInt(currentMouseRow) - Math.floor(dummyArray.length / 2);
+				var rowOffset = parseInt(pieceArrayColumn) + parseInt(currentMouseColumn) - Math.floor(dummyArray.length / 2);
 				
 				var makeThisIdChangeColorFinally = ("#" + columnOffset + "-" + rowOffset);
 				pieceShape.push(makeThisIdChangeColorFinally);
@@ -271,20 +285,24 @@ var getPiece = function(thisArray, currentMousePositionRow, currentMousePosition
 	return pieceShape;
 };
 
-var getShadow = function(shape, location){
 
-	//gets the specific game pie,ce
-	var arr1 = shape.split('-');
-		index = arr1[1],
-		thisArray = gamePiece[index]; // works gets a index 0-20
 
-	//creates an array with the mouse's relative location, assigns them to values
-	var arr2 = location.split('-'),
-		currentMousePositionRow = arr2[0],
-		currentMousePositionColumn = arr2[1]; // logic is sound
+// var getShadow = function(shape, location){
+	
+// 	//gets the specific game piece
+// 	var arr1 = shape.split('-');
+// 		index = arr1[1],
 
-	return getPiece(thisArray, currentMousePositionRow, currentMousePositionColumn);
-};
+// 		//clones the array of the shape, defensive copying
+// 		dummyArray = gamePiece[index]; // works gets a index 0-20
+
+// 	//creates an array with the mouse's relative location, assigns them to values
+// 	var arr2 = location.split('-'),
+// 		currentMousePositionRow = arr2[0],
+// 		currentMousePositionColumn = arr2[1]; // logic is sound
+
+// 	return getPiece(dummyArray, currentMousePositionRow, currentMousePositionColumn);
+// };
 
 var playerTurn = function() {
 	//listens for a click event on the images of the game pieces
@@ -299,7 +317,7 @@ var playerTurn = function() {
 			//gets ID of the tile that the mouse is hovering over
 			var currentLocation = $( this ).attr('id');
 			
-			shadowStates[1] = getShadow(thisPieceID, currentLocation);
+			shadowStates[1] = getPiece(thisPieceID, currentLocation);
 
 			var thisShadow = shadowStates[1]
 
@@ -352,15 +370,45 @@ var playerTurn = function() {
 
 
 var playBlokus = function() {
+
 	playerTurn();
 }
 
 var gameBoard = [];
+
+//an array that holds 2 shapes: the current shape location [1] and the previous shape location [0]
+//used to create and erase the shadow of the shape under the mouse as it moves along the board
 var shadowStates = [null, null];
-var score = 89;
+
 
 $(document).ready(function(){
 
 	setGameBoard();
 	playBlokus();
 });
+
+
+
+
+
+
+
+
+//create an array called Player 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
