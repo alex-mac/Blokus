@@ -228,9 +228,9 @@ var setGameBoard = function(){
 	$("#0-0").css("background-color", "yellow");
 	$("#0-19").css("background-color", "red");
 	$("#19-19").css("background-color", "green");
-
 }
 
+//should return a value, manipulate not the main array but a copy of the array
 var rotatePiece = function(shape){
 	var arr1 = shape.split('-');
 	index = arr1[1],
@@ -287,16 +287,18 @@ var getShadow = function(shape, location){
 };
 
 var playerTurn = function() {
-	//listens for a click event
+	//listens for a click event on the images of the game pieces
 	$(".game-piece").click(function(){
-		//gets ID of the piece clicked css**
+
+		//gets ID of the image clicked, returns a string ex. piece-11
 		var thisPieceID = $( this ).attr('id');
 
-		//adds a "shadow" of the piece before it is played
+		//adds a "shadow" of the piece before it is played on a position relative to the board
 		$(".game-tile").hover(function() {
 
+			//gets ID of the tile that the mouse is hovering over
 			var currentLocation = $( this ).attr('id');
-		
+			
 			shadowStates[1] = getShadow(thisPieceID, currentLocation);
 
 			var thisShadow = shadowStates[1]
@@ -321,7 +323,7 @@ var playerTurn = function() {
 				}
 			}
 		});
-		//**************************************
+		
 		$(document).keyup(function(e){
 			if(e.keyCode == 32){
 				rotatePiece(thisPieceID);
@@ -343,11 +345,8 @@ var playerTurn = function() {
 				$( thisShadow[i] ).addClass('occupied');
 				$( thisShadow[i] ).css('background-color', 'blue')
 				$( thisShadow[i] ).removeClass('hovered'); 
-			}
-			
-		})
-
-		
+			}	
+		})		
 	});
 }
 
