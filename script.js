@@ -1,14 +1,3 @@
-
-/*
-on move,
-bluePiecesUsed.push(the piece that just got used)
-
-turn all piece divs visible
-
-for each bluePiecesUsed
-   $(the piece.id).turnMeInvisible()
-*/
-
 var gamePiece = [ 
    {
       piece: 
@@ -325,13 +314,14 @@ var setGameBoard = function(){
 		}
 	}
 
+   //replace with css later 
 	$("#19-0").css("background-color", "blue");
 	$("#0-0").css("background-color", "yellow");
 	$("#0-19").css("background-color", "red");
 	$("#19-19").css("background-color", "green");
 }
 
-//should return a value, manipulate not the main array but a copy of the array
+//rotates the piece clockwise
 var rotateRight = function(shape){
 	var arr1 = shape.split('-');
 	index = arr1[1],
@@ -345,7 +335,6 @@ var rotateRight = function(shape){
 			temp[i][j] = dummyArray[temp.length - j - 1][i];
 		}
 	}
-
 	// replaces the original array with the rotated array ... for now ...
 	gamePiece[index].piece = temp;
 };
@@ -368,6 +357,8 @@ var rotateLeft = function(shape){
    gamePiece[index].piece = temp;
 }
 
+//splits an id, gives you back an array.  You can grab the number (usually the second number) you
+//want by specifying the index
 var splitArrayAndGetANumberBack = function(array, index) {
 	var arr1 = array.split('-');
 	return arr1[index];
@@ -413,7 +404,7 @@ var convertToCoordinates = function(string) {
 
 //checks to see if the value at the square is 3 or not.  if there is a 3 found, return true immediately
 var squareIsTaken = function(){
-   var arr1 = shadowStates[1];
+   var arr1 = stateOf[1];
    for (var i = 0; i < arr1.length; i++){
       var coordinates = convertToCoordinates(arr1[i]);
       if (gameBoard[coordinates[0]][coordinates[1]] === 3) {
@@ -503,7 +494,7 @@ var getPlayer = function() {
 }
 
 calculateWinner = function(){
-   var leadingScore = -99;
+   var leadingScore = -89;
    var winner = null;
    for (var i = 0; i < playerScore.length; i++){
       if (playerScore[i] > leadingScore){
@@ -514,43 +505,44 @@ calculateWinner = function(){
    return winner;
 }
 
+//checks for 4 passes, once every player has passed at least once, the score is calculated
+var checkForGameOver = function(){
+   var gameOver = 0;
+   for (var i = 0; i < playerPassed.length; i++){ // checks how many players passed
+      if (playerPassed[i] === "passed"){
+         gameOver++;
+      }
+   }
+   if(gameOver === 4){ //if everyone has passed, then calculate the winner
+      var winner = calculateWinner();
+      if (winner == null) {
+         swal({   
+            title: "Winner!",   
+            text: "It's a tie!",  
+            imageUrl: "images/thumbs-up.jpg" 
+         });
+      } else {
+         swal({   
+            title: "Winner!",   
+            text: "The winner is " + winner + "!",  
+            imageUrl: "images/thumbs-up.jpg" 
+         });
+         $( document ).off; //doesn't work...
+      }
+   } else {
+      count++;
+      $("h3").html("Player: " + playerColor[count % 4]);
+   }
+}
+
 var playerTurn = function() {
    
    getPlayer();
 
-
    //sets the index in the array for that player to "passed"
    $("#button").click(function(){
       playerPassed[count % 4] = "passed";
-
-      var gameOver = 0;
-      for (var i = 0; i < playerPassed.length; i++){
-         if (playerPassed[i] === "passed"){
-            gameOver++;
-         }
-      }
-      if(gameOver === 4){
-         var winner = calculateWinner();
-         if (winner == null) {
-            swal({   
-               title: "Winner!",   
-               text: "The winner is a tie",  
-               imageUrl: "images/thumbs-up.jpg" 
-            });
-         } else {
-
-            swal({   
-               title: "Winner!",   
-               text: "The winner is " + winner + "!",  
-               imageUrl: "images/thumbs-up.jpg" 
-            });
-            $( document ).off; //doesn't work...
-         }
-
-      } else {
-         count++;
-         $("h3").html("Player: " + playerColor[count % 4]);
-      }
+      checkForGameOver();
    });
 
    //listens for a click event on the images of the game pieces
@@ -562,7 +554,6 @@ var playerTurn = function() {
       imageClicked = "on";
    });
 
-   // var currentLocation = null;
    //adds a "shadow" of the piece before it is played on a position relative to the board
    $(".game-tile").hover(function() {
      
@@ -570,9 +561,9 @@ var playerTurn = function() {
       $( ".hovered" ).css("background-color", playerColor[count % 4]);
          //gets ID of the tile that the mouse is hovering over
          currentLocation = $( this ).attr('id'); // made it not declared inside the event.  change here if it messes things up         
-         shadowStates[1] = getPiece(thisPieceID, currentLocation);
+         stateOf[1] = getPiece(thisPieceID, currentLocation);
 
-         var thisShadow = shadowStates[1]
+         var thisShadow = stateOf[1]
          //the loop that adds the class hover onto the divs in relative to the shape of the
          //piece that was selected
          for (var i = 0; i < thisShadow.length; i++){
@@ -582,13 +573,13 @@ var playerTurn = function() {
             }
          }
 
-         shadowStates[0] = thisShadow;
+         stateOf[0] = thisShadow;
       }
 
       //removes the after shadow of the piece after you move the mouse to another div
    }, function() {   
       if (imageClicked === "on") {
-         var resetShadow = shadowStates[0]
+         var resetShadow = stateOf[0]
          for (var i = 0; i < resetShadow.length; i++){
             if ( !$(resetShadow[i]).hasClass( "occupied" ) ){
                $( resetShadow[i] ).removeClass("hovered");
@@ -600,7 +591,7 @@ var playerTurn = function() {
       
 
    $(document).keyup(function(e){
-         // if shadowStates[1].indexOf('position') > -1
+         // if stateOf[1].indexOf('position') > -1
       if(e.keyCode == 83){ //pressing s
          rotateRight(thisPieceID);
       }
@@ -616,7 +607,7 @@ var playerTurn = function() {
       
       //you're hovered over in order to check corner later
       var turn = count % 4;
-      if (shadowStates[1].indexOf(playerStart[turn]) == -1 && count < 4){
+      if (stateOf[1].indexOf(playerStart[turn]) == -1 && count < 4){
          swal({   
             title: "Invalid Move!",
             text: "Please play in the designated corner for the first move",   
@@ -647,7 +638,7 @@ var playerTurn = function() {
          
          //listens for a click on the gameboard. to try to add a piece onto the gameboard
          //only works if a piece is selected
-         var thisShadow = shadowStates[1]
+         var thisShadow = stateOf[1]
          for (var i = 0; i < thisShadow.length; i++){
             $( thisShadow[i] ).addClass('occupied');
             $( thisShadow[i] ).css('background-color', playerColor[turn])
@@ -686,7 +677,7 @@ var gameBoard = [];
 
 //an array that holds 2 shapes: the current shape location [1] and the previous shape location [0]
 //used to create and erase the shadow of the shape under the mouse as it moves along the board
-var shadowStates = [null, null];
+var stateOf = [null, null];
 var playerColor = ["blue", "yellow", "red", "green"];
 var playerStart = ["#19-0", "#0-0", "#0-19", "#19-19"];
 var playerPassed = [null, null, null, null];
@@ -703,21 +694,27 @@ var originalArray = ["#piece-0", "#piece-1", "#piece-2", "#piece-3",
    "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
 var piecePlayedByPlayer = {
    blue: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
-   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
-   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+
    yellow: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
-   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
-   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+
    red: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
-   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
-   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
    green:["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
-   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
-   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
 };
 
 

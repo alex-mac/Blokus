@@ -1,15 +1,18 @@
 body {
 	background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/gplaypattern.png");
+	font-family: 'News Cycle', sans-serif;
 }
 
 h1 {
 	margin-top: 10px;
 	float: right;
+	font-family: 'News Cycle', sans-serif;
 }
 
 p {
 	text-align: center;
 	margin: 0 auto;
+	font-family: 'News Cycle', sans-serif;
 }
 
 #game-board{
