@@ -451,7 +451,15 @@ var getPlayer = function() {
 }
 
 calculateWinner = function(){
+   var leadingScore = -99;
    var winner = null;
+   for (var i = 0; i < playerScore.length; i++){
+      if (playerScore[i] > winner){
+         leadingScore = playerScore[i];
+         winner = playerColor[i];
+      }
+   }
+   return winner;
 }
 
 var playerTurn = function() {
@@ -466,13 +474,18 @@ var playerTurn = function() {
       var gameOver = 0;
       for (var i = 0; i < playerPassed.length; i++){
          if (playerPassed[i] === "passed"){
-            // gameOver++;
             gameOver++;
          }
       }
       if(gameOver === 4){
-         // calculateWinner();
-         alert("game over gucci");
+         var winner = calculateWinner();
+         if (winner == null) {
+            alert("It's a tie!");
+         } else {
+            alert("Game Over. The winner is " + playerColor[winner] + "!");
+            $( document ).off;
+         }
+
       } else {
          count++;
          console.log(count);
@@ -585,6 +598,8 @@ var playerTurn = function() {
          count++;
          console.log(count);
          getPlayer();
+
+         $("#score").html(playerScore);
 		}	
 	})
    return true;	//gets here only once ... why ?	
