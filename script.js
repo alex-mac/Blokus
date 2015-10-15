@@ -424,25 +424,60 @@ var squareIsTaken = function(){
    return false;
 }
 
-// var checkForCorners = function() {
-
-// };
-
 var addToGameBoard = function(pieceID){
    var coordinates = convertToCoordinates(pieceID);
    gameBoard[coordinates[0]][coordinates[1]] = 3;
 }
 
-var playerTurn = function() {
-   if (playerPassed[count % 4] == "passed"){
-      count++;
-     
-   } 
+var getPlayer = function() {
+   color = playerColor[count % 4];
 
+
+   //shows all the images, ALL 21 OF THEM
+   for (var i = 0; i < originalArray.length; i++){
+      $( originalArray[i] ).show();
+   }
+         
+         //hides the ones that return the indexOf -1 (doesn't exist in the array)
+   for (var i = 0; i <  originalArray.length; i++){
+      for (var j = 0; j < piecePlayedByPlayer[color].length; j++){
+         if (piecePlayedByPlayer[color].indexOf(originalArray[i]) == -1){
+            $( originalArray[i] ).hide();
+         }
+      }    
+   }
+
+   $("h3").html("Player: " + playerColor[count % 4]);
+}
+
+calculateWinner = function(){
+   var winner = null;
+}
+
+var playerTurn = function() {
+   
+   getPlayer();
+
+
+   //sets the index in the array for that player to "passed"
    $("#button").click(function(){
       playerPassed[count % 4] = "passed";
-      count++;
-      
+
+      var gameOver = 0;
+      for (var i = 0; i < playerPassed.length; i++){
+         if (playerPassed[i] === "passed"){
+            // gameOver++;
+            gameOver++;
+         }
+      }
+      if(gameOver === 4){
+         // calculateWinner();
+         alert("game over gucci");
+      } else {
+         count++;
+         console.log(count);
+         $("h3").html("Player: " + playerColor[count % 4]);
+      }
    });
 
    //listens for a click event on the images of the game pieces
@@ -457,20 +492,14 @@ var playerTurn = function() {
    var currentLocation = null;
    //adds a "shadow" of the piece before it is played on a position relative to the board
    $(".game-tile").hover(function() {
-      if (playerPassed[count % 4] == "passed"){
-         count++;
-         
-      } 
+     
       if (imageClicked === "on"){
       $( ".hovered" ).css("background-color", playerColor[count % 4]);
          //gets ID of the tile that the mouse is hovering over
-         currentLocation = $( this ).attr('id'); // made it not declared inside the event.  change here if it messes things up
-         
+         currentLocation = $( this ).attr('id'); // made it not declared inside the event.  change here if it messes things up         
          shadowStates[1] = getPiece(thisPieceID, currentLocation);
 
          var thisShadow = shadowStates[1]
-
-  
          //the loop that adds the class hover onto the divs in relative to the shape of the
          //piece that was selected
          for (var i = 0; i < thisShadow.length; i++){
@@ -513,22 +542,26 @@ var playerTurn = function() {
    $("#game-board").mouseup(function(){
       var turn = count % 4;
       if (shadowStates[1].indexOf(playerStart[turn]) == -1 && count < 4){
-         // swal({   title: "Invalid Move!",
-         //    text: "Please play in the designated corner for the first move",   
-         //    type: "error"
-         // });
-         alert("Please play in the designated corner for the first move!");
+         swal({   
+            title: "Invalid Move!",
+            text: "Please play in the designated corner for the first move",   
+            type: "error"
+         });
       } else if (squareIsTaken() && count >= 4){  
-         alert("Yo playa there's already a piece played there");
+         
+         swal({   
+            title: "Invalid Move!",
+            text: "Home skillet, there's already another piece in that spot",   
+            type: "error"
+         });
       // } else if (checkForCorners() && count >= 4) {
       //    alert("Home skillet make sure to tap dat corner broski");
       } else {
             // having trouble getting the on and off to work
          imageClicked = "off";
          
-            //listens for a click on the gameboard. to try to add a piece onto the gameboard
-            //only works if a piece is selected
-      
+         //listens for a click on the gameboard. to try to add a piece onto the gameboard
+         //only works if a piece is selected
          var thisShadow = shadowStates[1]
          for (var i = 0; i < thisShadow.length; i++){
             $( thisShadow[i] ).addClass('occupied');
@@ -550,35 +583,18 @@ var playerTurn = function() {
          }
          
          count++;
-
-         color = playerColor[count % 4];
-
-         //shows all the images, ALL 21 OF THEM
-         for (var i = 0; i < originalArray.length; i++){
-            $( originalArray[i] ).show();
-         }
-         
-         //hides the ones that return the indexOf -1 (doesn't exist in the array)
-         for (var i = 0; i <  originalArray.length; i++){
-            for (var j = 0; j < piecePlayedByPlayer[color].length; j++){
-               if (piecePlayedByPlayer[color].indexOf(originalArray[i]) == -1){
-                  $( originalArray[i] ).hide();
-               }
-            }    
-         }
-
-
-
-         $("h3").html("Player: " + playerColor[count % 4]);
-
+         console.log(count);
+         getPlayer();
 		}	
-	})		
+	})
+   return true;	//gets here only once ... why ?	
 };
 
 
 var playBlokus = function() {
    //set up passes here
-	playerTurn();
+	var value = playerTurn();
+   console.log(value);
 }
 
 var gameBoard = [];
