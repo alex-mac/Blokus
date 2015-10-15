@@ -426,7 +426,6 @@ var squareIsTaken = function(){
 //almost identical to getPiece... can clean up some code here..
 var checkForSides = function(){
    var index = splitArrayAndGetANumberBack(thisPieceID, 1);
-   console.log(index);
    var gameBoardMouseRow = splitArrayAndGetANumberBack(currentLocation, 0);
    var gameBoardMouseColumn = splitArrayAndGetANumberBack(currentLocation, 1);
 
@@ -439,7 +438,6 @@ var checkForSides = function(){
             var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
             
             var checkMe = ("#" + rowOffset + "-" + columnOffset);
-            console.log(playerColor[count % 4]);
             if($(checkMe).hasClass(playerColor[count % 4])){
                   return true;
             }
@@ -452,7 +450,6 @@ var checkForSides = function(){
 
 var checkForCorners = function(){
    var index = splitArrayAndGetANumberBack(thisPieceID, 1);
-   console.log(index);
    var gameBoardMouseRow = splitArrayAndGetANumberBack(currentLocation, 0);
    var gameBoardMouseColumn = splitArrayAndGetANumberBack(currentLocation, 1);
 
@@ -509,7 +506,7 @@ calculateWinner = function(){
    var leadingScore = -99;
    var winner = null;
    for (var i = 0; i < playerScore.length; i++){
-      if (playerScore[i] > winner){
+      if (playerScore[i] > leadingScore){
          leadingScore = playerScore[i];
          winner = playerColor[i];
       }
@@ -535,10 +532,19 @@ var playerTurn = function() {
       if(gameOver === 4){
          var winner = calculateWinner();
          if (winner == null) {
-            alert("It's a tie!");
+            swal({   
+               title: "Winner!",   
+               text: "The winner is a tie",  
+               imageUrl: "images/thumbs-up.jpg" 
+            });
          } else {
-            alert("Game Over. The winner is " + playerColor[winner] + "!");
-            $( document ).off;
+
+            swal({   
+               title: "Winner!",   
+               text: "The winner is " + winner + "!",  
+               imageUrl: "images/thumbs-up.jpg" 
+            });
+            $( document ).off; //doesn't work...
          }
 
       } else {
@@ -617,16 +623,24 @@ var playerTurn = function() {
             type: "error"
          });
       } else if (squareIsTaken() && count >= 4){  
-         
          swal({   
             title: "Invalid Move!",
             text: "Home skillet, there's already another piece in that spot",   
             type: "error"
          });
       } else if (checkForSides() && count >= 4) {
-          alert("Home skillet make sure to avoid your sides");
+         swal({   
+            title: "Invalid Move!",
+            text: "Home skillet, mind yo sides (you can't touch your own side's color)",   
+            type: "error"
+         });
+          
       } else if (count >= 4 && checkForCorners() ){
-         alert("you need to touch a corner...");
+         swal({   
+            title: "Invalid Move!",
+            text: "Make sure to touch your own corner!",   
+            type: "error"
+         });
       } else {
             // having trouble getting the on and off to work
          imageClicked = "off";
@@ -654,7 +668,6 @@ var playerTurn = function() {
          }
          
          count++;
-         console.log(count);
          getPlayer();
 
          $("#score").html(playerScore);
@@ -667,7 +680,6 @@ var playerTurn = function() {
 var playBlokus = function() {
    //set up passes here
 	var value = playerTurn();
-   console.log(value);
 }
 
 var gameBoard = [];
