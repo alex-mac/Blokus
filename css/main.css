@@ -2,6 +2,16 @@ body {
 	background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/gplaypattern.png");
 }
 
+h1 {
+	margin-top: 10px;
+	float: right;
+}
+
+p {
+	text-align: center;
+	margin: 0 auto;
+}
+
 #game-board{
 	height: 702px;
 	width: 702px;
@@ -14,8 +24,8 @@ body {
 #left-side {
 	height: 550px;
 	width: 500px;
-	border: 1px solid green;
-	margin-top: 130px;
+	/*border: 1px solid green;*/
+	margin-top: 50px;
 	float: left;
 }
 

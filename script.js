@@ -1,4 +1,18 @@
-var gamePiece = [  
+var bluePiecesUsed = [];
+
+/*
+on move,
+bluePiecesUsed.push(the piece that just got used)
+
+turn all piece divs visible
+
+for each bluePiecesUsed
+   $(the piece.id).turnMeInvisible()
+*/
+
+var gamePiece = [ 
+   //{
+      //piece: 
    [          
       [0, 0, 0, 0, 0, 0, 0], // * * * * *
       [0, 0, 0, 0, 0, 0, 0], //index = 00
@@ -8,6 +22,8 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
+      //id: "#piece-0"
+   //},
 
    [                         // * * * *
       [0, 0, 0, 0, 0, 0, 0], // *
@@ -210,6 +226,223 @@ var gamePiece = [
    ]
 ];
 
+
+// var gamePiece = [ 
+//    //{
+//       //piece: 
+//       [          
+//          [0, 0, 0, 0, 0, 0, 0], // * * * * *
+//          [0, 0, 0, 0, 0, 0, 0], //index = 00
+//          [1, 2, 2, 2, 2, 2, 1],
+//          [2, 3, 3, 3, 3, 3, 2],
+//          [1, 2, 2, 2, 2, 2, 1],
+//          [0, 0, 0, 0, 0, 0, 0],
+//          [0, 0, 0, 0, 0, 0, 0]
+//       ],
+//       //id: "#piece-0"
+//    //},
+
+//    [                         // * * * *
+//       [0, 0, 0, 0, 0, 0, 0], // *
+//       [0, 1, 2, 1, 0, 0, 0], //index = 01
+//       [0, 2, 3, 2, 2, 2, 1],
+//       [0, 2, 3, 3, 3, 3, 2],
+//       [0, 1, 2, 2, 2, 2, 1],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//    [                          //   * * *
+//       [0, 0, 1, 2, 1, 0, 0],  // * *
+//       [0, 0, 2, 3, 2, 0, 0],  //index = 02
+//       [0, 0, 2, 3, 2, 1, 0],
+//       [0, 0, 2, 3, 3, 2, 0],
+//       [0, 0, 1, 2, 3, 2, 0],
+//       [0, 0, 0, 1, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//    [                          //   *
+//       [0, 0, 0, 0, 0, 0, 0],  // * * * *
+//       [0, 0, 1, 2, 1, 0, 0],  //index = 03
+//       [0, 1, 2, 3, 2, 2, 1],
+//       [0, 2, 3, 3, 3, 3, 2],
+//       [0, 1, 2, 2, 2, 2, 1],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//    [                         //   *
+//       [0, 0, 0, 0, 0, 0, 0], // * * *
+//       [0, 0, 1, 2, 1, 0, 0], //     *
+//       [0, 1, 2, 3, 2, 1, 0], //index = 04
+//       [0, 2, 3, 3, 3, 2, 0],
+//       [0, 1, 2, 2, 3, 2, 0],
+//       [0, 0, 0, 1, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//    [                         //   *
+//       [0, 0, 0, 0, 0, 0, 0], // * * *
+//       [0, 0, 1, 2, 1, 0, 0], //   *
+//       [0, 1, 2, 3, 2, 1, 0], //index = 05
+//       [0, 2, 3, 3, 3, 2, 0],
+//       [0, 1, 2, 3, 2, 1, 0],
+//       [0, 0, 1, 2, 1, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//    [                         // * * *
+//       [0, 0, 0, 0, 0, 0, 0], // *   *
+//       [0, 0, 0, 0, 0, 0, 0], //index = 06
+//       [0, 1, 2, 2, 2, 1, 0],
+//       [0, 2, 3, 3, 3, 2, 0],
+//       [0, 2, 3, 2, 3, 2, 0],
+//       [0, 1, 2, 1, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//    [                         //   * *
+//       [0, 0, 0, 0, 0, 0, 0], // * * *
+//       [0, 0, 1, 2, 1, 0, 0], //index = 07
+//       [0, 1, 2, 3, 2, 1, 0],
+//       [0, 0, 2, 3, 3, 2, 0],
+//       [0, 1, 2, 3, 3, 2, 0],
+//       [0, 0, 1, 2, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//    [                         //     *
+//       [0, 0, 0, 0, 0, 0, 0], //   * *
+//       [0, 0, 0, 1, 2, 1, 0], // * *
+//       [0, 0, 1, 2, 3, 2, 0], //index = 08
+//       [0, 1, 2, 3, 3, 2, 0],
+//       [0, 2, 3, 3, 2, 1, 0],
+//       [0, 1, 2, 2, 1, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//    [                         // *
+//       [0, 0, 0, 0, 0, 0, 0], // * * *
+//       [0, 0, 1, 2, 1, 0, 0], // *
+//       [0, 0, 2, 3, 2, 0, 0], //index = 09
+//       [0, 1, 2, 3, 2, 1, 0],
+//       [0, 2, 3, 3, 3, 2, 0],
+//       [0, 1, 2, 2, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//     [                        // *
+//       [0, 0, 1, 2, 1, 0, 0], // *
+//       [0, 0, 2, 3, 2, 0, 0], // * * *
+//       [0, 0, 2, 3, 2, 2, 1], //index = 10
+//       [0, 0, 2, 3, 3, 3, 2],
+//       [0, 0, 1, 2, 2, 2, 1],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+         
+//     [                        // *
+//       [0, 0, 0, 0, 0, 0, 0], // * * *
+//       [0, 0, 1, 2, 2, 1, 0], //     *
+//       [0, 0, 2, 3, 3, 2, 0], //index = 11
+//       [0, 1, 2, 3, 2, 1, 0],
+//       [0, 2, 3, 3, 2, 0, 0],
+//       [0, 1, 2, 2, 1, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+            
+//     [                        // * * * *
+//       [0, 0, 1, 2, 1, 0, 0], // 
+//       [0, 0, 2, 3, 2, 0, 0], //index = 12 
+//       [0, 0, 2, 3, 2, 0, 0],
+//       [0, 0, 2, 3, 2, 0, 0], 
+//       [0, 0, 2, 3, 2, 0, 0],
+//       [0, 0, 1, 2, 1, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+        
+//     [                        // * *
+//       [0, 0, 0, 0, 0, 0, 0], //   * *
+//       [0, 0, 1, 2, 2, 1, 0], //index = 13 
+//       [0, 1, 2, 3, 3, 2, 0],
+//       [0, 2, 3, 3, 2, 1, 0], 
+//       [0, 1, 2, 2, 1, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+        
+//     [                        //  * *
+//       [0, 0, 0, 0, 0, 0, 0], //  * *
+//       [0, 1, 2, 2, 1, 0, 0], //index = 14 
+//       [0, 2, 3, 3, 2, 0, 0],
+//       [0, 2, 3, 3, 2, 0, 0], 
+//       [0, 1, 2, 2, 1, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+        
+//     [                        //   *
+//       [0, 0, 0, 0, 0, 0, 0], // * * *
+//       [0, 0, 1, 2, 1, 0, 0], //index = 15
+//       [0, 1, 2, 3, 2, 1, 0],
+//       [0, 2, 3, 3, 3, 2, 0], 
+//       [0, 1, 2, 2, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+        
+//     [                        // * * * 
+//       [0, 0, 0, 0, 0, 0, 0], //     *
+//       [0, 0, 0, 0, 0, 0, 0], //index = 16
+//       [0, 1, 2, 2, 2, 2, 0],
+//       [0, 2, 3, 3, 3, 2, 0], 
+//       [0, 1, 2, 2, 3, 2, 0],
+//       [0, 0, 0, 1, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+        
+//     [                         
+//       [0, 0, 0, 0, 0, 0, 0], // * * *
+//       [0, 0, 0, 0, 0, 0, 0], //index = 17
+//       [0, 1, 2, 2, 2, 1, 0],
+//       [0, 2, 3, 3, 3, 2, 0], 
+//       [0, 1, 2, 2, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+        
+//     [                        // *
+//       [0, 0, 0, 0, 0, 0, 0], // * *
+//       [0, 0, 1, 2, 1, 0, 0], //index = 18
+//       [0, 0, 2, 3, 2, 1, 0],
+//       [0, 0, 2, 3, 3, 2, 0], 
+//       [0, 0, 1, 2, 2, 1, 0],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+        
+//     [                        
+//       [0, 0, 0, 0, 0, 0, 0], // * * 
+//       [0, 0, 1, 2, 1, 0, 0], //index = 19 
+//       [0, 0, 2, 3, 2, 0, 0],
+//       [0, 0, 2, 3, 2, 0, 0], 
+//       [0, 0, 1, 2, 1, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ],
+        
+//     [                        // *
+//       [0, 0, 0, 0, 0, 0, 0], // 
+//       [0, 0, 0, 0, 0, 0, 0], //index = 20 
+//       [0, 0, 1, 2, 1, 0, 0],
+//       [0, 0, 2, 3, 2, 0, 0], 
+//       [0, 0, 1, 2, 1, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0],
+//       [0, 0, 0, 0, 0, 0, 0]
+//    ]
+// ];
+
 //sets up arrays, appends 20 "squares" to each row and column
 var setGameBoard = function(){
 	//columns
@@ -323,9 +556,9 @@ var squareIsTaken = function(){
    return false;
 }
 
-var checkForCorners = function() {
+// var checkForCorners = function() {
 
-};
+// };
 
 var addToGameBoard = function(pieceID){
    var coordinates = convertToCoordinates(pieceID);
@@ -333,7 +566,18 @@ var addToGameBoard = function(pieceID){
 }
 
 var playerTurn = function() {
-   
+   if (playerPassed[count % 4] == "passed"){
+      count++;
+      console.log("this particular count is " + count);
+   } 
+
+   $("#button").click(function(){
+      playerPassed[count % 4] = "passed";
+      count++;
+      console.log(playerPassed[count % 4])
+      console.log(count);
+   });
+
    //listens for a click event on the images of the game pieces
    $(".game-piece").click(function(){
 
@@ -346,6 +590,10 @@ var playerTurn = function() {
    var currentLocation = null;
    //adds a "shadow" of the piece before it is played on a position relative to the board
    $(".game-tile").hover(function() {
+      if (playerPassed[count % 4] == "passed"){
+         count++;
+         console.log("this particular count is " + count);
+      } 
       if (imageClicked === "on"){
       $( ".hovered" ).css("background-color", playerColor[count % 4]);
          //gets ID of the tile that the mouse is hovering over
@@ -355,6 +603,7 @@ var playerTurn = function() {
 
          var thisShadow = shadowStates[1]
 
+  
          //the loop that adds the class hover onto the divs in relative to the shape of the
          //piece that was selected
          for (var i = 0; i < thisShadow.length; i++){
@@ -381,7 +630,7 @@ var playerTurn = function() {
    });
       
 
-    $(document).keyup(function(e){
+   $(document).keyup(function(e){
          // if shadowStates[1].indexOf('position') > -1
       if(e.keyCode == 83){ //pressing s
          rotateRight(thisPieceID);
@@ -397,11 +646,15 @@ var playerTurn = function() {
    $("#game-board").mouseup(function(){
       var turn = count % 4;
       if (shadowStates[1].indexOf(playerStart[turn]) == -1 && count < 4){
+         // swal({   title: "Invalid Move!",
+         //    text: "Please play in the designated corner for the first move",   
+         //    type: "error"
+         // });
          alert("Please play in the designated corner for the first move!");
       } else if (squareIsTaken() && count >= 4){  
-         alert("Yo playa you already played there");
-      } else if (checkForCorners() && count >= 4) {
-         alert("Home skillet make sure to tap dat corner broski");
+         alert("Yo playa there's already a piece played there");
+      // } else if (checkForCorners() && count >= 4) {
+      //    alert("Home skillet make sure to tap dat corner broski");
       } else {
             // having trouble getting the on and off to work
          imageClicked = "off";
@@ -410,16 +663,15 @@ var playerTurn = function() {
             //only works if a piece is selected
       
          var thisShadow = shadowStates[1]
-            // if (isAValidMove()){
          for (var i = 0; i < thisShadow.length; i++){
             $( thisShadow[i] ).addClass('occupied');
             $( thisShadow[i] ).css('background-color', playerColor[turn])
             $( thisShadow[i] ).removeClass('hovered');
             addToGameBoard(thisShadow[i]);
+            playerScore[turn] ++;
          }
-         // addValuesToGameBoard(thisPieceID, currentLocation);
-         count += 1;
-        
+         count++;
+         $("h3").html("Player: " + playerColor[count % 4]);
 		}	
 	})		
 };
@@ -437,8 +689,9 @@ var gameBoard = [];
 var shadowStates = [null, null];
 var playerColor = ["blue", "yellow", "red", "green"];
 var playerStart = ["#19-0", "#0-0", "#0-19", "#19-19"];
+var playerPassed = [null, null, null, null];
+var playerScore = [-89, -89, -89, -89];
 var count = 0;
-// if turn is in the root, it only happens once ... place it in the function to have it recalculate
 var imageClicked = "off";
 var thisPieceID = null;
 
