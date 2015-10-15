@@ -1,4 +1,3 @@
-var bluePiecesUsed = [];
 
 /*
 on move,
@@ -11,8 +10,8 @@ for each bluePiecesUsed
 */
 
 var gamePiece = [ 
-   //{
-      //piece: 
+   {
+      piece: 
    [          
       [0, 0, 0, 0, 0, 0, 0], // * * * * *
       [0, 0, 0, 0, 0, 0, 0], //index = 00
@@ -22,9 +21,11 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-      //id: "#piece-0"
-   //},
-
+      id: "#piece-0"
+   },
+   
+   {
+      piece:
    [                         // * * * *
       [0, 0, 0, 0, 0, 0, 0], // *
       [0, 1, 2, 1, 0, 0, 0], //index = 01
@@ -34,7 +35,11 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "#piece-1"
+   },
+
+   {
+      piece:     
    [                          //   * * *
       [0, 0, 1, 2, 1, 0, 0],  // * *
       [0, 0, 2, 3, 2, 0, 0],  //index = 02
@@ -44,7 +49,11 @@ var gamePiece = [
       [0, 0, 0, 1, 2, 1, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "#piece-2"
+   },
+
+   {
+      piece:     
    [                          //   *
       [0, 0, 0, 0, 0, 0, 0],  // * * * *
       [0, 0, 1, 2, 1, 0, 0],  //index = 03
@@ -54,7 +63,11 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "#piece-3"
+   },
+
+   {
+      piece:     
    [                         //   *
       [0, 0, 0, 0, 0, 0, 0], // * * *
       [0, 0, 1, 2, 1, 0, 0], //     *
@@ -64,7 +77,11 @@ var gamePiece = [
       [0, 0, 0, 1, 2, 1, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+     id: "#piece-4"
+   },
+
+   {
+      piece:    
    [                         //   *
       [0, 0, 0, 0, 0, 0, 0], // * * *
       [0, 0, 1, 2, 1, 0, 0], //   *
@@ -74,7 +91,11 @@ var gamePiece = [
       [0, 0, 1, 2, 1, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "#piece-5"
+   },
+
+   {
+      piece:     
    [                         // * * *
       [0, 0, 0, 0, 0, 0, 0], // *   *
       [0, 0, 0, 0, 0, 0, 0], //index = 06
@@ -84,7 +105,11 @@ var gamePiece = [
       [0, 1, 2, 1, 2, 1, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "#piece-6"
+   },
+
+   {
+      piece:
    [                         //   * *
       [0, 0, 0, 0, 0, 0, 0], // * * *
       [0, 0, 1, 2, 1, 0, 0], //index = 07
@@ -94,7 +119,11 @@ var gamePiece = [
       [0, 0, 1, 2, 2, 1, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "##piece-7"
+   },
+
+   {
+      piece: 
    [                         //     *
       [0, 0, 0, 0, 0, 0, 0], //   * *
       [0, 0, 0, 1, 2, 1, 0], // * *
@@ -104,7 +133,11 @@ var gamePiece = [
       [0, 1, 2, 2, 1, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "#piece-8"
+   },
+
+   {
+      piece:
    [                         // *
       [0, 0, 0, 0, 0, 0, 0], // * * *
       [0, 0, 1, 2, 1, 0, 0], // *
@@ -114,7 +147,11 @@ var gamePiece = [
       [0, 1, 2, 2, 2, 1, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "#piece-9"
+   },
+
+   {
+      piece:
     [                        // *
       [0, 0, 1, 2, 1, 0, 0], // *
       [0, 0, 2, 3, 2, 0, 0], // * * *
@@ -124,7 +161,11 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-         
+      id: "#piece-10"
+   },
+
+   {
+      piece:
     [                        // *
       [0, 0, 0, 0, 0, 0, 0], // * * *
       [0, 0, 1, 2, 2, 1, 0], //     *
@@ -134,7 +175,12 @@ var gamePiece = [
       [0, 1, 2, 2, 1, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-            
+      id: "#piece-11"
+   },
+
+   {
+      piece:
+
     [                        // * * * *
       [0, 0, 1, 2, 1, 0, 0], // 
       [0, 0, 2, 3, 2, 0, 0], //index = 12 
@@ -144,7 +190,12 @@ var gamePiece = [
       [0, 0, 1, 2, 1, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-        
+      id: "#piece-12"
+   },
+
+   {
+      piece:
+
     [                        // * *
       [0, 0, 0, 0, 0, 0, 0], //   * *
       [0, 0, 1, 2, 2, 1, 0], //index = 13 
@@ -154,7 +205,12 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-        
+      id: "#piece-13"
+   },
+
+   {
+      piece:
+
     [                        //  * *
       [0, 0, 0, 0, 0, 0, 0], //  * *
       [0, 1, 2, 2, 1, 0, 0], //index = 14 
@@ -164,7 +220,12 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-        
+      id: "#piece-14"
+   },
+
+   {
+      piece:
+
     [                        //   *
       [0, 0, 0, 0, 0, 0, 0], // * * *
       [0, 0, 1, 2, 1, 0, 0], //index = 15
@@ -174,7 +235,12 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-        
+      id: "#piece-15"
+   },
+
+   {
+      piece:
+
     [                        // * * * 
       [0, 0, 0, 0, 0, 0, 0], //     *
       [0, 0, 0, 0, 0, 0, 0], //index = 16
@@ -184,7 +250,11 @@ var gamePiece = [
       [0, 0, 0, 1, 2, 1, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-        
+      id: "#piece-16"
+   },
+
+   {
+      piece:
     [                         
       [0, 0, 0, 0, 0, 0, 0], // * * *
       [0, 0, 0, 0, 0, 0, 0], //index = 17
@@ -194,7 +264,11 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-        
+      id: "#piece-17"
+   },
+
+   {
+      piece:
     [                        // *
       [0, 0, 0, 0, 0, 0, 0], // * *
       [0, 0, 1, 2, 1, 0, 0], //index = 18
@@ -204,7 +278,11 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-        
+      id: "#piece-18"
+   },
+
+   {
+      piece:
     [                        
       [0, 0, 0, 0, 0, 0, 0], // * * 
       [0, 0, 1, 2, 1, 0, 0], //index = 19 
@@ -214,7 +292,11 @@ var gamePiece = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
    ],
-        
+      id: "#piece-19"
+   },
+
+   {
+      piece:
     [                        // *
       [0, 0, 0, 0, 0, 0, 0], // 
       [0, 0, 0, 0, 0, 0, 0], //index = 20 
@@ -223,225 +305,11 @@ var gamePiece = [
       [0, 0, 1, 2, 1, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
-   ]
+   ], 
+      id: "#piece-20"
+   }
 ];
 
-
-// var gamePiece = [ 
-//    //{
-//       //piece: 
-//       [          
-//          [0, 0, 0, 0, 0, 0, 0], // * * * * *
-//          [0, 0, 0, 0, 0, 0, 0], //index = 00
-//          [1, 2, 2, 2, 2, 2, 1],
-//          [2, 3, 3, 3, 3, 3, 2],
-//          [1, 2, 2, 2, 2, 2, 1],
-//          [0, 0, 0, 0, 0, 0, 0],
-//          [0, 0, 0, 0, 0, 0, 0]
-//       ],
-//       //id: "#piece-0"
-//    //},
-
-//    [                         // * * * *
-//       [0, 0, 0, 0, 0, 0, 0], // *
-//       [0, 1, 2, 1, 0, 0, 0], //index = 01
-//       [0, 2, 3, 2, 2, 2, 1],
-//       [0, 2, 3, 3, 3, 3, 2],
-//       [0, 1, 2, 2, 2, 2, 1],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//    [                          //   * * *
-//       [0, 0, 1, 2, 1, 0, 0],  // * *
-//       [0, 0, 2, 3, 2, 0, 0],  //index = 02
-//       [0, 0, 2, 3, 2, 1, 0],
-//       [0, 0, 2, 3, 3, 2, 0],
-//       [0, 0, 1, 2, 3, 2, 0],
-//       [0, 0, 0, 1, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//    [                          //   *
-//       [0, 0, 0, 0, 0, 0, 0],  // * * * *
-//       [0, 0, 1, 2, 1, 0, 0],  //index = 03
-//       [0, 1, 2, 3, 2, 2, 1],
-//       [0, 2, 3, 3, 3, 3, 2],
-//       [0, 1, 2, 2, 2, 2, 1],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//    [                         //   *
-//       [0, 0, 0, 0, 0, 0, 0], // * * *
-//       [0, 0, 1, 2, 1, 0, 0], //     *
-//       [0, 1, 2, 3, 2, 1, 0], //index = 04
-//       [0, 2, 3, 3, 3, 2, 0],
-//       [0, 1, 2, 2, 3, 2, 0],
-//       [0, 0, 0, 1, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//    [                         //   *
-//       [0, 0, 0, 0, 0, 0, 0], // * * *
-//       [0, 0, 1, 2, 1, 0, 0], //   *
-//       [0, 1, 2, 3, 2, 1, 0], //index = 05
-//       [0, 2, 3, 3, 3, 2, 0],
-//       [0, 1, 2, 3, 2, 1, 0],
-//       [0, 0, 1, 2, 1, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//    [                         // * * *
-//       [0, 0, 0, 0, 0, 0, 0], // *   *
-//       [0, 0, 0, 0, 0, 0, 0], //index = 06
-//       [0, 1, 2, 2, 2, 1, 0],
-//       [0, 2, 3, 3, 3, 2, 0],
-//       [0, 2, 3, 2, 3, 2, 0],
-//       [0, 1, 2, 1, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//    [                         //   * *
-//       [0, 0, 0, 0, 0, 0, 0], // * * *
-//       [0, 0, 1, 2, 1, 0, 0], //index = 07
-//       [0, 1, 2, 3, 2, 1, 0],
-//       [0, 0, 2, 3, 3, 2, 0],
-//       [0, 1, 2, 3, 3, 2, 0],
-//       [0, 0, 1, 2, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//    [                         //     *
-//       [0, 0, 0, 0, 0, 0, 0], //   * *
-//       [0, 0, 0, 1, 2, 1, 0], // * *
-//       [0, 0, 1, 2, 3, 2, 0], //index = 08
-//       [0, 1, 2, 3, 3, 2, 0],
-//       [0, 2, 3, 3, 2, 1, 0],
-//       [0, 1, 2, 2, 1, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//    [                         // *
-//       [0, 0, 0, 0, 0, 0, 0], // * * *
-//       [0, 0, 1, 2, 1, 0, 0], // *
-//       [0, 0, 2, 3, 2, 0, 0], //index = 09
-//       [0, 1, 2, 3, 2, 1, 0],
-//       [0, 2, 3, 3, 3, 2, 0],
-//       [0, 1, 2, 2, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//     [                        // *
-//       [0, 0, 1, 2, 1, 0, 0], // *
-//       [0, 0, 2, 3, 2, 0, 0], // * * *
-//       [0, 0, 2, 3, 2, 2, 1], //index = 10
-//       [0, 0, 2, 3, 3, 3, 2],
-//       [0, 0, 1, 2, 2, 2, 1],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-         
-//     [                        // *
-//       [0, 0, 0, 0, 0, 0, 0], // * * *
-//       [0, 0, 1, 2, 2, 1, 0], //     *
-//       [0, 0, 2, 3, 3, 2, 0], //index = 11
-//       [0, 1, 2, 3, 2, 1, 0],
-//       [0, 2, 3, 3, 2, 0, 0],
-//       [0, 1, 2, 2, 1, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-            
-//     [                        // * * * *
-//       [0, 0, 1, 2, 1, 0, 0], // 
-//       [0, 0, 2, 3, 2, 0, 0], //index = 12 
-//       [0, 0, 2, 3, 2, 0, 0],
-//       [0, 0, 2, 3, 2, 0, 0], 
-//       [0, 0, 2, 3, 2, 0, 0],
-//       [0, 0, 1, 2, 1, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-        
-//     [                        // * *
-//       [0, 0, 0, 0, 0, 0, 0], //   * *
-//       [0, 0, 1, 2, 2, 1, 0], //index = 13 
-//       [0, 1, 2, 3, 3, 2, 0],
-//       [0, 2, 3, 3, 2, 1, 0], 
-//       [0, 1, 2, 2, 1, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-        
-//     [                        //  * *
-//       [0, 0, 0, 0, 0, 0, 0], //  * *
-//       [0, 1, 2, 2, 1, 0, 0], //index = 14 
-//       [0, 2, 3, 3, 2, 0, 0],
-//       [0, 2, 3, 3, 2, 0, 0], 
-//       [0, 1, 2, 2, 1, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-        
-//     [                        //   *
-//       [0, 0, 0, 0, 0, 0, 0], // * * *
-//       [0, 0, 1, 2, 1, 0, 0], //index = 15
-//       [0, 1, 2, 3, 2, 1, 0],
-//       [0, 2, 3, 3, 3, 2, 0], 
-//       [0, 1, 2, 2, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-        
-//     [                        // * * * 
-//       [0, 0, 0, 0, 0, 0, 0], //     *
-//       [0, 0, 0, 0, 0, 0, 0], //index = 16
-//       [0, 1, 2, 2, 2, 2, 0],
-//       [0, 2, 3, 3, 3, 2, 0], 
-//       [0, 1, 2, 2, 3, 2, 0],
-//       [0, 0, 0, 1, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-        
-//     [                         
-//       [0, 0, 0, 0, 0, 0, 0], // * * *
-//       [0, 0, 0, 0, 0, 0, 0], //index = 17
-//       [0, 1, 2, 2, 2, 1, 0],
-//       [0, 2, 3, 3, 3, 2, 0], 
-//       [0, 1, 2, 2, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-        
-//     [                        // *
-//       [0, 0, 0, 0, 0, 0, 0], // * *
-//       [0, 0, 1, 2, 1, 0, 0], //index = 18
-//       [0, 0, 2, 3, 2, 1, 0],
-//       [0, 0, 2, 3, 3, 2, 0], 
-//       [0, 0, 1, 2, 2, 1, 0],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-        
-//     [                        
-//       [0, 0, 0, 0, 0, 0, 0], // * * 
-//       [0, 0, 1, 2, 1, 0, 0], //index = 19 
-//       [0, 0, 2, 3, 2, 0, 0],
-//       [0, 0, 2, 3, 2, 0, 0], 
-//       [0, 0, 1, 2, 1, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ],
-        
-//     [                        // *
-//       [0, 0, 0, 0, 0, 0, 0], // 
-//       [0, 0, 0, 0, 0, 0, 0], //index = 20 
-//       [0, 0, 1, 2, 1, 0, 0],
-//       [0, 0, 2, 3, 2, 0, 0], 
-//       [0, 0, 1, 2, 1, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0],
-//       [0, 0, 0, 0, 0, 0, 0]
-//    ]
-// ];
 
 //sets up arrays, appends 20 "squares" to each row and column
 var setGameBoard = function(){
@@ -467,7 +335,7 @@ var setGameBoard = function(){
 var rotateRight = function(shape){
 	var arr1 = shape.split('-');
 	index = arr1[1],
-	dummyArray = gamePiece[index];
+	dummyArray = gamePiece[index].piece;
 	
 	var temp = new Array(7);
 
@@ -479,13 +347,13 @@ var rotateRight = function(shape){
 	}
 
 	// replaces the original array with the rotated array ... for now ...
-	gamePiece[index] = temp;
+	gamePiece[index].piece = temp;
 };
 
 var rotateLeft = function(shape){
    var arr1 = shape.split('-');
    index = arr1[1],
-   dummyArray = gamePiece[index];
+   dummyArray = gamePiece[index].piece;
    
    var temp = new Array(7);
 
@@ -497,7 +365,7 @@ var rotateLeft = function(shape){
    }
 
    // replaces the original array with the rotated array ... for now ...
-   gamePiece[index] = temp;
+   gamePiece[index].piece = temp;
 }
 
 var convertToArray = function(array, index) {
@@ -512,7 +380,7 @@ var getPiece = function (shape, location){
 	currentMouseColumn = convertToArray(location, 1),
 	
 	//clones the array of the shape, defensive copying
-	dummyArray = gamePiece[index]; 
+	dummyArray = gamePiece[index].piece; 
 
 // var getPiece = function(dummyArray, currentMouseRow, currentMouseColumn) {
 	var pieceShape = [];
@@ -568,14 +436,13 @@ var addToGameBoard = function(pieceID){
 var playerTurn = function() {
    if (playerPassed[count % 4] == "passed"){
       count++;
-      console.log("this particular count is " + count);
+     
    } 
 
    $("#button").click(function(){
       playerPassed[count % 4] = "passed";
       count++;
-      console.log(playerPassed[count % 4])
-      console.log(count);
+      
    });
 
    //listens for a click event on the images of the game pieces
@@ -592,7 +459,7 @@ var playerTurn = function() {
    $(".game-tile").hover(function() {
       if (playerPassed[count % 4] == "passed"){
          count++;
-         console.log("this particular count is " + count);
+         
       } 
       if (imageClicked === "on"){
       $( ".hovered" ).css("background-color", playerColor[count % 4]);
@@ -670,8 +537,40 @@ var playerTurn = function() {
             addToGameBoard(thisShadow[i]);
             playerScore[turn] ++;
          }
+         var a = (parseInt(convertToArray(thisPieceID, 1)));
+         var b = "#piece-" + a;
+         var color = playerColor[count % 4];
+
+
+         //splices from the array
+         for (var i = 0; i < piecePlayedByPlayer[color].length; i++){
+            if (piecePlayedByPlayer[color][i].indexOf(b) > -1) {
+               var garbageVar = piecePlayedByPlayer[color].splice(i, 1);
+            }
+         }
+         
          count++;
+
+         color = playerColor[count % 4];
+
+         //shows all the images, ALL 21 OF THEM
+         for (var i = 0; i < originalArray.length; i++){
+            $( originalArray[i] ).show();
+         }
+         
+         //hides the ones that return the indexOf -1 (doesn't exist in the array)
+         for (var i = 0; i <  originalArray.length; i++){
+            for (var j = 0; j < piecePlayedByPlayer[color].length; j++){
+               if (piecePlayedByPlayer[color].indexOf(originalArray[i]) == -1){
+                  $( originalArray[i] ).hide();
+               }
+            }    
+         }
+
+
+
          $("h3").html("Player: " + playerColor[count % 4]);
+
 		}	
 	})		
 };
@@ -694,6 +593,28 @@ var playerScore = [-89, -89, -89, -89];
 var count = 0;
 var imageClicked = "off";
 var thisPieceID = null;
+var originalArray = ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
+   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
+   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+var piecePlayedByPlayer = {
+   blue: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
+   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
+   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+   yellow: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
+   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
+   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+   red: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
+   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
+   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+   green:["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
+   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
+   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+};
 
 
 $(document).ready(function(){
