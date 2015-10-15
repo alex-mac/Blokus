@@ -368,24 +368,24 @@ var rotateLeft = function(shape){
    gamePiece[index].piece = temp;
 }
 
-var convertToArray = function(array, index) {
+var splitArrayAndGetANumberBack = function(array, index) {
 	var arr1 = array.split('-');
 	return arr1[index];
 }
 
 var getPiece = function (shape, location){
 	//gets the specific game piece from the array of 21 game pieces
-	var index = convertToArray(shape, 1),
-	currentMouseRow = convertToArray(location, 0),
-	currentMouseColumn = convertToArray(location, 1),
+	var index = splitArrayAndGetANumberBack(shape, 1),
+	currentMouseRow = splitArrayAndGetANumberBack(location, 0),
+	currentMouseColumn = splitArrayAndGetANumberBack(location, 1),
 	
 	//clones the array of the shape, defensive copying
 	dummyArray = gamePiece[index].piece; 
 
 // var getPiece = function(dummyArray, currentMouseRow, currentMouseColumn) {
 	var pieceShape = [];
-	for (var pieceArrayRow = 0; pieceArrayRow < 7; pieceArrayRow ++){
-		for (var pieceArrayColumn = 0; pieceArrayColumn < 7; pieceArrayColumn++){
+	for (var pieceArrayRow = 0; pieceArrayRow < dummyArray.length; pieceArrayRow ++){
+		for (var pieceArrayColumn = 0; pieceArrayColumn < dummyArray[0].length; pieceArrayColumn++){
 			//checks if it is a valid shape on the bloc (value of 3)
 			if(dummyArray[pieceArrayRow][pieceArrayColumn] == 3){
 
@@ -422,6 +422,61 @@ var squareIsTaken = function(){
    }
 
    return false;
+}
+//almost identical to getPiece... can clean up some code here..
+var checkForSides = function(){
+   var index = splitArrayAndGetANumberBack(thisPieceID, 1);
+   console.log(index);
+   var gameBoardMouseRow = splitArrayAndGetANumberBack(currentLocation, 0);
+   var gameBoardMouseColumn = splitArrayAndGetANumberBack(currentLocation, 1);
+
+   var arr9 = gamePiece[index].piece;
+   // pieceSelectedViaID = $( this ).attr('id'); // gets image ID number
+   for (var pieceArrayRow = 0; pieceArrayRow < arr9.length; pieceArrayRow ++){
+      for (var pieceArrayColumn = 0; pieceArrayColumn < arr9[0].length; pieceArrayColumn++){
+         if (arr9[pieceArrayRow][pieceArrayColumn] == 2){
+            var columnOffset = parseInt(pieceArrayColumn) + parseInt(gameBoardMouseColumn) - Math.floor(arr9.length / 2);
+            var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
+            
+            var checkMe = ("#" + rowOffset + "-" + columnOffset);
+            console.log(playerColor[count % 4]);
+            if($(checkMe).hasClass(playerColor[count % 4])){
+                  return true;
+            }
+         }
+      }
+   }
+   
+   return false;
+}
+
+var checkForCorners = function(){
+   var index = splitArrayAndGetANumberBack(thisPieceID, 1);
+   console.log(index);
+   var gameBoardMouseRow = splitArrayAndGetANumberBack(currentLocation, 0);
+   var gameBoardMouseColumn = splitArrayAndGetANumberBack(currentLocation, 1);
+
+   var arr9 = gamePiece[index].piece;
+
+   var totalCorners = 0;
+   var checkerForCorners = 0;
+
+   // pieceSelectedViaID = $( this ).attr('id'); // gets image ID number
+   for (var pieceArrayRow = 0; pieceArrayRow < arr9.length; pieceArrayRow ++){
+      for (var pieceArrayColumn = 0; pieceArrayColumn < arr9[0].length; pieceArrayColumn++){
+         if (arr9[pieceArrayRow][pieceArrayColumn] == 1){
+            totalCorners++;
+            var columnOffset = parseInt(pieceArrayColumn) + parseInt(gameBoardMouseColumn) - Math.floor(arr9.length / 2);
+            var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
+            
+            var checkMe = ("#" + rowOffset + "-" + columnOffset);
+            if($(checkMe).hasClass(playerColor[count % 4])){
+               return false;   
+            }
+         }
+      }
+   }
+   return true;
 }
 
 var addToGameBoard = function(pieceID){
@@ -488,7 +543,6 @@ var playerTurn = function() {
 
       } else {
          count++;
-         console.log(count);
          $("h3").html("Player: " + playerColor[count % 4]);
       }
    });
@@ -502,7 +556,7 @@ var playerTurn = function() {
       imageClicked = "on";
    });
 
-   var currentLocation = null;
+   // var currentLocation = null;
    //adds a "shadow" of the piece before it is played on a position relative to the board
    $(".game-tile").hover(function() {
      
@@ -553,6 +607,8 @@ var playerTurn = function() {
       //removes all event handlers associated with the class gametile after the player
       //lifts their mouse
    $("#game-board").mouseup(function(){
+      
+      //you're hovered over in order to check corner later
       var turn = count % 4;
       if (shadowStates[1].indexOf(playerStart[turn]) == -1 && count < 4){
          swal({   
@@ -567,8 +623,10 @@ var playerTurn = function() {
             text: "Home skillet, there's already another piece in that spot",   
             type: "error"
          });
-      // } else if (checkForCorners() && count >= 4) {
-      //    alert("Home skillet make sure to tap dat corner broski");
+      } else if (checkForSides() && count >= 4) {
+          alert("Home skillet make sure to avoid your sides");
+      } else if (count >= 4 && checkForCorners() ){
+         alert("you need to touch a corner...");
       } else {
             // having trouble getting the on and off to work
          imageClicked = "off";
@@ -583,7 +641,7 @@ var playerTurn = function() {
             addToGameBoard(thisShadow[i]);
             playerScore[turn] ++;
          }
-         var a = (parseInt(convertToArray(thisPieceID, 1)));
+         var a = (parseInt(splitArrayAndGetANumberBack(thisPieceID, 1)));
          var b = "#piece-" + a;
          var color = playerColor[count % 4];
 
@@ -624,6 +682,9 @@ var playerScore = [-89, -89, -89, -89];
 var count = 0;
 var imageClicked = "off";
 var thisPieceID = null;
+var currentLocation = null;
+
+
 var originalArray = ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
    "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
    "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
