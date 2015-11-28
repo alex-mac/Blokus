@@ -1,3 +1,8 @@
+//things that still need to be implemented
+//
+// freeze the board after the alert and prevents players from playing
+
+
 var gamePiece = [ 
    {
       piece: 
@@ -299,7 +304,6 @@ var gamePiece = [
    }
 ];
 
-
 //sets up arrays, appends 20 "squares" to each row and column
 var setGameBoard = function(){
 	//columns
@@ -321,10 +325,18 @@ var setGameBoard = function(){
 	$("#19-19").css("background-color", "green");
 }
 
+var informError = function(string){
+   swal({   
+         title: "Invalid Move!",
+         text: string,   
+         type: "error"
+      });
+}
+
 //rotates the piece clockwise
 var rotateRight = function(shape){
-	var arr1 = shape.split('-');
-	index = arr1[1],
+	var index = arraySplit(shape, 1);
+
 	dummyArray = gamePiece[index].piece;
 	
 	var temp = new Array(7);
@@ -335,17 +347,16 @@ var rotateRight = function(shape){
 			temp[i][j] = dummyArray[temp.length - j - 1][i];
 		}
 	}
-	// replaces the original array with the rotated array ... for now ...
+
 	gamePiece[index].piece = temp;
 };
 
 var rotateLeft = function(shape){
-   var arr1 = shape.split('-');
-   index = arr1[1],
+   var index = arraySplit(shape, 1);
+
    dummyArray = gamePiece[index].piece;
    
    var temp = new Array(7);
-
    for (var i = 0; i < 7; i++){
       temp[i] = new Array(7);
       for (var j = 0; j < 7; j++){
@@ -353,22 +364,24 @@ var rotateLeft = function(shape){
       }
    }
 
-   // replaces the original array with the rotated array ... for now ...
    gamePiece[index].piece = temp;
 }
 
-//splits an id, gives you back an array.  You can grab the number (usually the second number) you
-//want by specifying the index
-var splitArrayAndGetANumberBack = function(array, index) {
+//returns the index requested in an array
+var arraySplit = function(array, index) {
 	var arr1 = array.split('-');
 	return arr1[index];
 }
 
+//arguments that it takes in: an array and the index whose value you want back
+//this function doesn't have any dependencies (for example: $( document ) )
+//returns the value located at tahat index of the array
+
 var getPiece = function (shape, location){
 	//gets the specific game piece from the array of 21 game pieces
-	var index = splitArrayAndGetANumberBack(shape, 1),
-	currentMouseRow = splitArrayAndGetANumberBack(location, 0),
-	currentMouseColumn = splitArrayAndGetANumberBack(location, 1),
+	var index = arraySplit(shape, 1),
+	currentMouseRow = arraySplit(location, 0),
+	currentMouseColumn = arraySplit(location, 1),
 	
 	//clones the array of the shape, defensive copying
 	dummyArray = gamePiece[index].piece; 
@@ -402,7 +415,7 @@ var convertToCoordinates = function(string) {
    return coordinates;
 }
 
-//checks to see if the value at the square is 3 or not.  if there is a 3 found, return true immediately
+//checks if the value ingameBoard is 3. If 3 found, return true; return false otehrwise
 var squareIsTaken = function(){
    var arr1 = stateOf[1];
    for (var i = 0; i < arr1.length; i++){
@@ -411,14 +424,13 @@ var squareIsTaken = function(){
          return true;
       }
    }
-
    return false;
 }
-//almost identical to getPiece... can clean up some code here..
+
 var checkForSides = function(){
-   var index = splitArrayAndGetANumberBack(thisPieceID, 1);
-   var gameBoardMouseRow = splitArrayAndGetANumberBack(currentLocation, 0);
-   var gameBoardMouseColumn = splitArrayAndGetANumberBack(currentLocation, 1);
+   var index = arraySplit(thisPieceID, 1);
+   var gameBoardMouseRow = arraySplit(currentLocation, 0);
+   var gameBoardMouseColumn = arraySplit(currentLocation, 1);
 
    var arr9 = gamePiece[index].piece;
    // pieceSelectedViaID = $( this ).attr('id'); // gets image ID number
@@ -440,12 +452,10 @@ var checkForSides = function(){
 }
 
 var checkForCorners = function(){
-   var index = splitArrayAndGetANumberBack(thisPieceID, 1);
-   var gameBoardMouseRow = splitArrayAndGetANumberBack(currentLocation, 0);
-   var gameBoardMouseColumn = splitArrayAndGetANumberBack(currentLocation, 1);
-
+   var index = arraySplit(thisPieceID, 1);
+   var gameBoardMouseRow = arraySplit(currentLocation, 0);
+   var gameBoardMouseColumn = arraySplit(currentLocation, 1);
    var arr9 = gamePiece[index].piece;
-
    var totalCorners = 0;
    var checkerForCorners = 0;
 
@@ -472,16 +482,14 @@ var addToGameBoard = function(pieceID){
    gameBoard[coordinates[0]][coordinates[1]] = 3;
 }
 
-var getPlayer = function() {
+//shows all images, compares them to player's set, removes the differences
+var getPlayerPiecesLeft = function() {
    color = playerColor[count % 4];
 
-
-   //shows all the images, ALL 21 OF THEM
    for (var i = 0; i < originalArray.length; i++){
       $( originalArray[i] ).show();
    }
          
-         //hides the ones that return the indexOf -1 (doesn't exist in the array)
    for (var i = 0; i <  originalArray.length; i++){
       for (var j = 0; j < piecePlayedByPlayer[color].length; j++){
          if (piecePlayedByPlayer[color].indexOf(originalArray[i]) == -1){
@@ -493,6 +501,7 @@ var getPlayer = function() {
    $("h3").html("Player: " + playerColor[count % 4]);
 }
 
+//compares player scores to see who is the highest
 calculateWinner = function(){
    var leadingScore = -89;
    var winner = null;
@@ -505,16 +514,18 @@ calculateWinner = function(){
    return winner;
 }
 
-//checks for 4 passes, once every player has passed at least once, the score is calculated
+//checks for 4 passes. After everyone passes at least once, proceeds to game Over
 var checkForGameOver = function(){
    var gameOver = 0;
-   for (var i = 0; i < playerPassed.length; i++){ // checks how many players passed
+   for (var i = 0; i < playerPassed.length; i++){ 
       if (playerPassed[i] === "passed"){
          gameOver++;
       }
    }
+
    if(gameOver === 4){ //if everyone has passed, then calculate the winner
       var winner = calculateWinner();
+
       if (winner == null) {
          swal({   
             title: "Winner!",   
@@ -527,7 +538,6 @@ var checkForGameOver = function(){
             text: "The winner is " + winner + "!",  
             imageUrl: "images/thumbs-up.jpg" 
          });
-         $( document ).off; //doesn't work...
       }
    } else {
       count++;
@@ -535,9 +545,54 @@ var checkForGameOver = function(){
    }
 }
 
-var playerTurn = function() {
-   
-   getPlayer();
+var gameBoard = [];
+var stateOf = [null, null];
+var playerColor = ["blue", "yellow", "red", "green"];
+var playerStart = ["#19-0", "#0-0", "#0-19", "#19-19"];
+var playerPassed = [null, null, null, null];
+var playerScore = [-89, -89, -89, -89];
+var count = 0;
+var imageClicked = "off";
+var thisPieceID = null;
+var currentLocation = null;
+
+
+var originalArray = ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
+   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
+   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+
+var piecePlayedByPlayer = {
+   blue: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+
+   yellow: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+
+   red: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
+
+   green:["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+};
+
+
+$(document).ready(function(){
+	setGameBoard();
+	
+   getPlayerPiecesLeft();
 
    //sets the index in the array for that player to "passed"
    $("#button").click(function(){
@@ -589,18 +644,15 @@ var playerTurn = function() {
      }
    });
       
-
-   $(document).keyup(function(e){
-         // if stateOf[1].indexOf('position') > -1
+   //listens for a key click and rotates the piece depending on which key was pressed
+   $(document).keyup(function(e){      
       if(e.keyCode == 83){ //pressing s
          rotateRight(thisPieceID);
       }
-
       if(e.keyCode == 65){ //pressing a 
          rotateLeft(thisPieceID);
       }
    });
-
       //removes all event handlers associated with the class gametile after the player
       //lifts their mouse
    $("#game-board").mouseup(function(){
@@ -608,30 +660,14 @@ var playerTurn = function() {
       //you're hovered over in order to check corner later
       var turn = count % 4;
       if (stateOf[1].indexOf(playerStart[turn]) == -1 && count < 4){
-         swal({   
-            title: "Invalid Move!",
-            text: "Please play in the designated corner for the first move",   
-            type: "error"
-         });
+         informError("Please play in the designated corner for the first move");
       } else if (squareIsTaken() && count >= 4){  
-         swal({   
-            title: "Invalid Move!",
-            text: "Home skillet, there's already another piece in that spot",   
-            type: "error"
-         });
+         informError("There's already a piece that is played here!");
       } else if (checkForSides() && count >= 4) {
-         swal({   
-            title: "Invalid Move!",
-            text: "Home skillet, mind yo sides (you can't touch your own side's color)",   
-            type: "error"
-         });
+            informError("You can't touch your own color on the sides");
           
       } else if (count >= 4 && checkForCorners() ){
-         swal({   
-            title: "Invalid Move!",
-            text: "Make sure to touch your own corner!",   
-            type: "error"
-         });
+            informError("Make sure to touch your own corner!");
       } else {
             // having trouble getting the on and off to work
          imageClicked = "off";
@@ -646,7 +682,7 @@ var playerTurn = function() {
             addToGameBoard(thisShadow[i]);
             playerScore[turn] ++;
          }
-         var a = (parseInt(splitArrayAndGetANumberBack(thisPieceID, 1)));
+         var a = (parseInt(arraySplit(thisPieceID, 1)));
          var b = "#piece-" + a;
          var color = playerColor[count % 4];
 
@@ -654,71 +690,14 @@ var playerTurn = function() {
          //splices from the array
          for (var i = 0; i < piecePlayedByPlayer[color].length; i++){
             if (piecePlayedByPlayer[color][i].indexOf(b) > -1) {
-               var garbageVar = piecePlayedByPlayer[color].splice(i, 1);
+               piecePlayedByPlayer[color].splice(i, 1);
             }
          }
          
          count++;
-         getPlayer();
+         getPlayerPiecesLeft();
 
          $("#score").html(playerScore);
-		}	
-	})
-   return true;	//gets here only once ... why ?	
-};
-
-
-var playBlokus = function() {
-   //set up passes here
-	var value = playerTurn();
-}
-
-var gameBoard = [];
-
-//an array that holds 2 shapes: the current shape location [1] and the previous shape location [0]
-//used to create and erase the shadow of the shape under the mouse as it moves along the board
-var stateOf = [null, null];
-var playerColor = ["blue", "yellow", "red", "green"];
-var playerStart = ["#19-0", "#0-0", "#0-19", "#19-19"];
-var playerPassed = [null, null, null, null];
-var playerScore = [-89, -89, -89, -89];
-var count = 0;
-var imageClicked = "off";
-var thisPieceID = null;
-var currentLocation = null;
-
-
-var originalArray = ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
-   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
-   "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
-var piecePlayedByPlayer = {
-   blue: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
-         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
-
-   yellow: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
-         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
-
-   red: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
-         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
-   green:["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
-         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
-};
-
-
-$(document).ready(function(){
-	setGameBoard();
-	playBlokus();
+      }  
+   }) 
 });

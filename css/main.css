@@ -1,6 +1,7 @@
 body {
 	background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/gplaypattern.png");
 	font-family: 'News Cycle', sans-serif;
+	border: 1px solid red;
 }
 
 h1 {
@@ -102,7 +103,7 @@ p {
 #piece-3{
 	height: 70px;
 	width: 100px;
-	background-position: -410px -210px;
+	background-position: -410px -218px;
 }
 
 #piece-4{
@@ -205,4 +206,19 @@ p {
 	height: 40px;
 	width: 36px;
 	background-position: -60px 10px;
+}
+
+#circle-yellow {
+	width: 100px;
+	height: 100px;
+	background-color: yellow;
+	border-radius: 50%;
+	position: absolute;
+	left: 600px;
+	top: 0px;
+	filter: blur(10px); 
+	-webkit-filter: blur(10px); 
+	-moz-filter: blur(10px);
+	-o-filter: blur(10px);
+	-ms-filter: blur(10px);
 }
