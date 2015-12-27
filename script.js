@@ -1,8 +1,3 @@
-//things that still need to be implemented
-//
-// freeze the board after the alert and prevents players from playing
-
-
 var gamePiece = [ 
    {
       piece: 

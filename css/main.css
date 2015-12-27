@@ -2,6 +2,7 @@ body {
 	background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/gplaypattern.png");
 	font-family: 'News Cycle', sans-serif;
 	border: 1px solid red;
+	width: 100%;
 }
 
 h1 {
@@ -17,30 +18,37 @@ p {
 }
 
 #game-board{
-	height: 702px;
-	width: 702px;
-	border: 1px solid black;
-	margin-top: -15px;
-	margin-right: 45px;
-	float: right;
+  height: 600px;
+  width: 600px;
+  border: 1px solid gray;
+  border-radius: 0.5;
+  position: absolute;
+  left: 70%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #left-side {
-	height: 550px;
-	width: 500px;
-	/*border: 1px solid green;*/
-	margin-top: 50px;
-	float: left;
+  height: 600px;
+  width: 400px;
+  border: 1px solid green;
+  /*float: left;*/
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
+
+
 .game-tile{
-	float: left;
-	font-size: 0;
-	display: inline-block;
-	height: 35px;
-	width: 35px;
-	border: 1px solid lightgray;
-	background-color: white;
+  float: left;
+  font-size: 0;
+  display: inline-block;
+  height: 29.9px;
+  width: 29.9px;
+  border: 1px solid lightgray;
+  background-color: white;
 }
 
 .container {
@@ -70,155 +78,140 @@ p {
 	background-color: green;
 }
 
-
 #piece-0, #piece-1, #piece-2, #piece-3, #piece-4, #piece-5, #piece-6, #piece-7, 
 #piece-8, #piece-9, #piece-10, #piece-11, #piece-12, #piece-13, #piece-14, #piece-15, 
 #piece-16, #piece-17, #piece-18, #piece-19, #piece-20 
 {
-  background-image: url('../images/Blokus-pieces-25.png');
+  background-image: url('../images/red-25.png');
   background-repeat: no-repeat;
   display: inline-block;
-  margin: 10px 0px 0px 20px;
-
+  margin-left: 15px;  
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 #piece-0{
-	height: 120px;
-	width: 40px;
-	background-position: -475px -105px;
+  height: 116px;
+  width: 30px;
+  background-position: -475px -119px;
 }
 
 #piece-1{
-	height: 70px;
-	width: 110px;
-	background-position: 10px -120px;
+  height: 54px;
+  width: 96px;
+  background-position: 3px -140px;
 }
 
 #piece-2{
-	height: 60px;
-	width: 110px;
-	background-position: -275px -125px;
+  height: 55px;
+  width: 98px;
+  background-position: -279px -140px;
 }
 
 #piece-3{
-	height: 70px;
-	width: 100px;
-	background-position: -410px -218px;
+  height: 55px;
+  width: 100px;
+  background-position: -400px -238px;
 }
 
 #piece-4{
-	height: 80px;
-	width: 80px;
-	background-position: -230px -190px;
+  height: 75px;
+  width: 77px;
+  background-position: -235px -205px;
 }
 
 #piece-5{
-	height: 80px;
-	width: 80px;
-	background-position: -320px -190px;
+  height: 76px;
+  width: 76px;
+  background-position: -322px -205px;
 }
 
 #piece-6{
-	height: 80px;
-	width: 60px;
-	background-position: -145px -190px;
+  height: 76px;
+  width: 54px;
+  background-position: -148px -205px;
 }
 
 #piece-7{
-	height: 80px;
-	width: 65px;
-	background-position: 10px -190px;
+  height: 75px;
+  width: 56px;
+  background-position: 5px -205px;
 }
 
 #piece-8{
-	height: 80px;
-	width: 80px;
-	background-position: -60px -190px;
+  height: 80px;
+  width: 80px;
+  background-position: -60px -200px;
 }
 
 #piece-9{
-	height: 90px;
-	width: 90px;
-	background-position: -100px -100px;
+  height: 76px;
+  width: 76px;
+  background-position: -105px -118px;
 }
 
 #piece-10{
-	height: 90px;
-	width: 80px;
-	background-position: -190px -100px;
+  height: 75px;
+  width: 76px;
+  background-position: -192px -118px;
 }
 
 #piece-11{
-	height: 85px;
-	width: 85px;
-	background-position: -385px -100px;
+  height: 76px;
+  width: 76px;
+  background-position: -387px -118px;
 }
 
 #piece-12{
-	height: 40px;
-	width: 110px;
-	background-position: -185px -55px;
+  height: 35px;
+  width: 100px;
+  background-position: -190px -73px;
 }
 
 #piece-13{
-	height: 70px;
-	width: 90px;
-	background-position: -425px -30px;
+  height: 54px;
+  width: 78px;
+  background-position: -430px -53px;
 }
 
 #piece-14{
-	height: 70px;
-	width: 70px;
-	background-position: 10px -30px;
+  height: 55px;
+  width: 55px;
+  background-position: 4px -52px;
 }
 
 #piece-15{
-	height: 70px;
-	width: 80px;
-	background-position: -80px -30px;
+  height: 55px;
+  width: 78px;
+  background-position: -82px -52px;
 }
 
 #piece-16{
-	height: 70px;
-	width: 85px;
-	background-position: -320px -30px;
+  height: 60px;
+  width: 80px;
+  background-position: -320px -50px;
 }
 
 #piece-17 {
-	height: 40px;
-	width: 82px;
-	background-position: -365px 10px;
+  height: 30px;
+  width: 78px;
+  background-position: -365px -10px;
 }
 
 #piece-18 {
-	height: 60px;
-	width: 65px;
-	background-position: -255px 10px;
+  height: 55px;
+  width: 60px;
+  background-position: -255px -10px;
 }
 
 #piece-19 {
-	height: 40px;
-	width: 65px;
-	background-position: -145px 10px;
+  height: 30px;
+  width: 55px;
+  background-position: -147px -10px;
 }
 
 #piece-20 {
-	height: 40px;
-	width: 36px;
-	background-position: -60px 10px;
-}
-
-#circle-yellow {
-	width: 100px;
-	height: 100px;
-	background-color: yellow;
-	border-radius: 50%;
-	position: absolute;
-	left: 600px;
-	top: 0px;
-	filter: blur(10px); 
-	-webkit-filter: blur(10px); 
-	-moz-filter: blur(10px);
-	-o-filter: blur(10px);
-	-ms-filter: blur(10px);
+  height: 30px;
+  width: 36px;
+  background-position: -60px -10px;
 }

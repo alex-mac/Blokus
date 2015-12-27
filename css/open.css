@@ -1,0 +1,54 @@
+body {
+  background: url(../images/home.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+#title {
+  position: absolute;
+  top: 25%;
+  left: 37%;
+  color: white;
+}
+
+#title h1 {
+  font-size: 50px;
+}
+
+#title small {
+  color: black;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-play {
+  background: #FF1B4E;
+  color: white;
+}
+
+.btn-play:hover{
+  background: #E83424;
+  color: white;
+}
+
+.stayLeft {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+}
+
+.stayRight {
+  position: absolute;
+  top: 50%;
+  right: 30%;
+}
+
