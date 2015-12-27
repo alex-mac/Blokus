@@ -44,8 +44,8 @@ p {
   display: inline-block;
   height: 29.9px;
   width: 29.9px;
-  border: 1.5px solid gray;
-  background-color: #CBB7B7;
+  border: 1.5px solid #8C8C8C;
+  background-color: #CBCBCB;
 }
 
 .container {

@@ -583,7 +583,6 @@ var piecePlayedByPlayer = {
          "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
 };
 
-
 $(document).ready(function(){
 	setGameBoard();
 	
