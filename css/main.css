@@ -1,13 +1,13 @@
 body {
-	background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/gplaypattern.png");
+	background: url(../images/woodbg.jpg);
 	font-family: 'News Cycle', sans-serif;
-	border: 1px solid red;
 	width: 100%;
 }
 
 h1 {
-	margin-top: 10px;
-	float: right;
+  color: #68CC01;
+  margin-top: 10px;
+  float: right;
 	font-family: 'News Cycle', sans-serif;
 }
 
@@ -31,15 +31,12 @@ p {
 #left-side {
   height: 600px;
   width: 400px;
-  border: 1px solid green;
-  /*float: left;*/
+  border: 2px dashed black;
   position: absolute;
   left: 25%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
-
 
 .game-tile{
   float: left;
@@ -47,15 +44,23 @@ p {
   display: inline-block;
   height: 29.9px;
   width: 29.9px;
-  border: 1px solid lightgray;
-  background-color: white;
+  border: 1.5px solid gray;
+  background-color: #CBB7B7;
 }
 
 .container {
-	/*border: 1px solid black;*/
 	height: 800px;
 	width: 1375px;
 	margin: 0 auto;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+#button {
+  background: #FFF334;
+  color: #0196CC;
 }
 
 .hovered {
