@@ -4,7 +4,36 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
 
+.btn {
+  border-radius: 0;
+}
+
+.btn-play {
+  background: #FF1B4E;
+  color: white;
+}
+
+.btn-play:hover{
+  background: #E83424;
+  color: white;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.stayLeft {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+}
+
+.stayRight {
+  position: absolute;
+  top: 50%;
+  right: 30%;
 }
 
 #title {
@@ -22,34 +51,3 @@ body {
 #title small {
   color: black;
 }
-
-.modal-content {
-  border-radius: 0;
-}
-
-.btn {
-  border-radius: 0;
-}
-
-.btn-play {
-  background: #FF1B4E;
-  color: white;
-}
-
-.btn-play:hover{
-  background: #E83424;
-  color: white;
-}
-
-.stayLeft {
-  position: absolute;
-  top: 50%;
-  left: 30%;
-}
-
-.stayRight {
-  position: absolute;
-  top: 50%;
-  right: 30%;
-}
-

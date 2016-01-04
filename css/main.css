@@ -17,6 +17,51 @@ p {
 	font-family: 'News Cycle', sans-serif;
 }
 
+.btn {
+  border-radius: 0;
+}
+
+.container {
+	height: 800px;
+	width: 1375px;
+	margin: 0 auto;
+}
+
+.game-tile{
+  float: left;
+  font-size: 0;
+  display: inline-block;
+  height: 29.9px;
+  width: 29.9px;
+  border: 1.5px solid #8C8C8C;
+  background-color: #CBCBCB;
+}
+
+.hovered {
+  opacity: .5;
+}
+
+.hovered.blue {
+  background-color: blue;
+}
+
+.hovered.yellow {
+  background-color: yellow;
+}
+
+.hovered.red {
+  background-color: red;
+}
+
+.hovered.green {
+  background-color: green;
+}
+
+#button {
+  background: #FFF334;
+  color: #0196CC;
+}
+
 #game-board{
   height: 600px;
   width: 600px;
@@ -36,51 +81,6 @@ p {
   left: 25%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-
-.game-tile{
-  float: left;
-  font-size: 0;
-  display: inline-block;
-  height: 29.9px;
-  width: 29.9px;
-  border: 1.5px solid #8C8C8C;
-  background-color: #CBCBCB;
-}
-
-.container {
-	height: 800px;
-	width: 1375px;
-	margin: 0 auto;
-}
-
-.btn {
-  border-radius: 0;
-}
-
-#button {
-  background: #FFF334;
-  color: #0196CC;
-}
-
-.hovered {
-	opacity: .5;
-}
-
-.hovered.blue {
-	background-color: blue;
-}
-
-.hovered.yellow {
-	background-color: yellow;
-}
-
-.hovered.red {
-	background-color: red;
-}
-
-.hovered.green {
-	background-color: green;
 }
 
 #piece-0, #piece-1, #piece-2, #piece-3, #piece-4, #piece-5, #piece-6, #piece-7, 
