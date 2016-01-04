@@ -493,7 +493,7 @@ var getPlayerPiecesLeft = function() {
       }    
    }
 
-   $("h3").html("Player: " + playerColor[count % 4]);
+   $("h1").html("Player: " + playerColor[count % 4]);
 }
 
 //compares player scores to see who is the highest
