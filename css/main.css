@@ -112,7 +112,6 @@ body {
   #left-side {
     height: 70%;
     width: 400px;
-    border: 2px dashed black;
     position: absolute;
     left: 20%;
     top: 50%;
