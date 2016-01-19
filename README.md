@@ -15,6 +15,7 @@ To create the game, not only did a visual interface of some sort had to be creat
 ## Known Issues 
 
 * Players can place part of their piece off of the gameboard
+* Cannot flip a piece
 * Not responsive for mobile yet
 
 ## Screenshots
