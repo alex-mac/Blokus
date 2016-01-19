@@ -480,6 +480,25 @@ var addToGameBoard = function(pieceID){
 //shows all images, compares them to player's set, removes the differences
 var getPlayerPiecesLeft = function() {
    color = playerColor[count % 4];
+   // change the image
+   if(color == "blue"){
+      for(var i = 0; i < 21; i++){
+         $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/384bcd.png')")
+      }
+   } else if (color == "red"){
+      for(var i = 0; i < 21; i++){
+         $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/ff1b36.png')")
+      }
+   }  else if (color == "yellow"){
+      for(var i = 0; i < 21; i++){
+         $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/fff334.png')")
+      }
+   } else if (color == "green"){
+      for(var i = 0; i < 21; i++){
+         $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/68cc01.png')")
+      }
+   }
+   $("h1").html("Player: " + playerColor[count % 4]);
 
    for (var i = 0; i < originalArray.length; i++){
       $( originalArray[i] ).show();

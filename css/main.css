@@ -120,140 +120,140 @@ body {
 
   #piece-0, #piece-1, #piece-2, #piece-3, #piece-4, #piece-5, #piece-6, #piece-7, 
   #piece-8, #piece-9, #piece-10, #piece-11, #piece-12, #piece-13, #piece-14, #piece-15, 
-  #piece-16, #piece-17, #piece-18, #piece-19, #piece-20 
+  #piece-16, #piece-17, #piece-18, #piece-19, #piece-20
   {
-    background-image: url('../images/red-25.png');
+    background-image: url('../images/Blokus-pieces/384bcd.png');
     background-repeat: no-repeat;
     display: inline-block;
     margin-left: 3%;  
     margin-bottom: 2%;
-    margin-top: 2%;
+    margin-top: 3%;
   }
 
   #piece-0{
     height: 116px;
     width: 30px;
-    background-position: -475px -119px;
+    background-position: -475px -105px;
   }
 
   #piece-1{
     height: 54px;
     width: 96px;
-    background-position: 3px -140px;
+    background-position: 3px -125px;
   }
 
   #piece-2{
     height: 55px;
     width: 98px;
-    background-position: -279px -140px;
+    background-position: -279px -125px;
   }
 
   #piece-3{
     height: 55px;
     width: 100px;
-    background-position: -400px -238px;
+    background-position: -405px -218px;
   }
 
   #piece-4{
     height: 75px;
     width: 77px;
-    background-position: -235px -205px;
+    background-position: -235px -190px;
   }
 
   #piece-5{
     height: 76px;
     width: 76px;
-    background-position: -322px -205px;
+    background-position: -322px -190px;
   }
 
   #piece-6{
     height: 76px;
     width: 54px;
-    background-position: -148px -205px;
+    background-position: -148px -190px;
   }
 
   #piece-7{
     height: 75px;
     width: 56px;
-    background-position: 5px -205px;
+    background-position: 5px -190px;
   }
 
   #piece-8{
     height: 80px;
     width: 80px;
-    background-position: -60px -200px;
+    background-position: -60px -190px;
   }
 
   #piece-9{
     height: 76px;
     width: 76px;
-    background-position: -105px -118px;
+    background-position: -105px -105px;
   }
 
   #piece-10{
     height: 75px;
     width: 76px;
-    background-position: -192px -118px;
+    background-position: -192px -105px;
   }
 
   #piece-11{
     height: 76px;
     width: 76px;
-    background-position: -387px -118px;
+    background-position: -387px -105px;
   }
 
   #piece-12{
     height: 35px;
     width: 100px;
-    background-position: -190px -73px;
+    background-position: -190px -60px;
   }
 
   #piece-13{
     height: 54px;
     width: 78px;
-    background-position: -430px -53px;
+    background-position: -430px -40px;
   }
 
   #piece-14{
     height: 55px;
     width: 55px;
-    background-position: 4px -52px;
+    background-position: 4px -40px;
   }
 
   #piece-15{
     height: 55px;
     width: 78px;
-    background-position: -82px -52px;
+    background-position: -82px -40px;
   }
 
   #piece-16{
     height: 60px;
     width: 80px;
-    background-position: -320px -50px;
+    background-position: -320px -40px;
   }
 
   #piece-17 {
     height: 30px;
     width: 78px;
-    background-position: -365px -10px;
+    background-position: -365px 2px;
   }
 
   #piece-18 {
     height: 55px;
     width: 60px;
-    background-position: -255px -10px;
+    background-position: -255px 5px;
   }
 
   #piece-19 {
     height: 30px;
     width: 55px;
-    background-position: -147px -10px;
+    background-position: -147px 0px;
   }
 
   #piece-20 {
     height: 30px;
     width: 36px;
-    background-position: -60px -10px;
+    background-position: -60px 3px;
   }
 
 }
