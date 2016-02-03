@@ -1,7 +1,3 @@
-html {
-  font-family: 'Permanent Marker', cursive;
-}
-
 h1 {
   visibility: hidden;
 }
@@ -38,10 +34,13 @@ body {
 @media (min-width: 1050px){
   
   h1 {
+    font-family: 'Press Start 2P', normal;
     visibility: visible;
     color: #68CC01;
     margin-top: 10px;
     right: 10px;
+    font-size: 20px;
+
   }
 
   h2 {
