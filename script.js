@@ -550,6 +550,7 @@ var checkForGameOver = function(){
    } else {
       count++;
       $("h3").html("Player: " + playerColor[count % 4]);
+      getPlayerPiecesLeft();
    }
 }
 
@@ -598,14 +599,14 @@ var piecePlayedByPlayer = {
 
 $(document).ready(function(){
 	setGameBoard();
-	
-   getPlayerPiecesLeft();
 
-   //sets the index in the array for that player to "passed"
-   $("#button").click(function(){
-      playerPassed[count % 4] = "passed";
-      checkForGameOver();
-   });
+  getPlayerPiecesLeft();
+
+  //sets the index in the array for that player to "passed"
+  $("#button").click(function(){
+    playerPassed[count % 4] = "passed";
+    checkForGameOver();
+  });
 
    //listens for a click event on the images of the game pieces
    $(".game-piece").click(function(){
