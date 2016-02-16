@@ -321,11 +321,11 @@ var setGameBoard = function(){
 }
 
 var informError = function(string){
-   swal({   
-         title: "Invalid Move!",
-         text: string,   
-         type: "error"
-      });
+  swal({   
+     title: "Invalid Move!",
+     text: string,   
+     type: "error"
+});
 }
 
 //rotates the piece clockwise
@@ -380,7 +380,7 @@ var getPiece = function (shape, location){
 	var pieceShape = [];
 	for (var pieceArrayRow = 0; pieceArrayRow < dummyArray.length; pieceArrayRow ++){
 		for (var pieceArrayColumn = 0; pieceArrayColumn < dummyArray[0].length; pieceArrayColumn++){
-			//checks if it is a valid shape on the bloc (value of 3)
+			//checks if it is a valid shape on the board (value of 3)
 			if(dummyArray[pieceArrayRow][pieceArrayColumn] == 3){
 
 				//adds the position in the array to the position on the board, the -math is to get the starting position to the center
@@ -388,8 +388,8 @@ var getPiece = function (shape, location){
 				var columnOffset = parseInt(pieceArrayRow) + parseInt(currentMouseRow) - Math.floor(dummyArray.length / 2);
 				var rowOffset = parseInt(pieceArrayColumn) + parseInt(currentMouseColumn) - Math.floor(dummyArray.length / 2);
 				
-				var makeThisIdChangeColorFinally = ("#" + columnOffset + "-" + rowOffset);
-				pieceShape.push(makeThisIdChangeColorFinally);
+				var change = ("#" + columnOffset + "-" + rowOffset);
+				pieceShape.push(change);
 			}
 		}
 	}
@@ -405,7 +405,7 @@ var convertToCoordinates = function(string) {
    return coordinates;
 }
 
-//checks if the value ingameBoard is 3. If 3 found, return true; return false otehrwise
+//checks if the value ingameBoard is 3. If 3 found, return true; 
 var squareIsTaken = function(){
   var arr1 = stateOf[1];
   for (var i = 0; i < arr1.length; i++){
@@ -431,13 +431,12 @@ var checkForSides = function(){
           var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
           
           var checkMe = ("#" + rowOffset + "-" + columnOffset);
-          if($(checkMe).hasClass(playerColor[count % 4])){
+          if($(checkMe).hasClass(player.color)){
                 return true;
           }
        }
     }
   }
-
   return false;
 }
 
@@ -449,7 +448,6 @@ var checkForCorners = function(){
   var totalCorners = 0;
   var checkerForCorners = 0;
 
-  // pieceSelectedViaID = $( this ).attr('id'); // gets image ID number
   for (var pieceArrayRow = 0; pieceArrayRow < arr9.length; pieceArrayRow ++){
     for (var pieceArrayColumn = 0; pieceArrayColumn < arr9[0].length; pieceArrayColumn++){
        if (arr9[pieceArrayRow][pieceArrayColumn] == 1){
@@ -458,7 +456,7 @@ var checkForCorners = function(){
           var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
           
           var checkMe = ("#" + rowOffset + "-" + columnOffset);
-          if($(checkMe).hasClass(playerColor[count % 4])){
+          if($(checkMe).hasClass(player.color)){
             return false;   
           }
        }
@@ -472,42 +470,51 @@ var addToGameBoard = function(pieceID){
    gameBoard[coordinates[0]][coordinates[1]] = 3;
 }
 
-//shows all images, compares them to player's set, removes the differences
+//shows available pieces left
 var getPlayerPiecesLeft = function() {
-  color = playerColor[count % 4];
-  // change the image
-  if(color == "blue"){
-    for(var i = 0; i < 21; i++){
+  color = player[count % 4].color;
+  
+  // changes the image of pieces on the left
+  switch(color) {
+    case "blue":
+      for(var i = 0; i < 21; i++){
        $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/384bcd.png')")
-    }
-  } else if (color === "red"){
-    for(var i = 0; i < 21; i++){
-      $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/ff1b36.png')")
-    }
-  }  else if (color === "yellow"){
-    for(var i = 0; i < 21; i++){
-      $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/fff334.png')")
-    }
-  } else if (color === "green"){
-    for(var i = 0; i < 21; i++){
-      $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/68cc01.png')")
-    }
+      }
+      break;
+    case "red":
+      for(var i = 0; i < 21; i++){
+        $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/ff1b36.png')")
+      }
+      break;
+    case "yellow":
+      for(var i = 0; i < 21; i++){
+        $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/fff334.png')")
+      }
+      break;
+    case "green":
+      for(var i = 0; i < 21; i++){
+        $("#piece-" + i).css("background-image", "url('images/Blokus-pieces/68cc01.png')")
+      }
+      break
+    default:
+      console.log("something went terribly wrong")
   }
-  $("h1").html("Player: " + playerColor[count % 4]);
+  
+  $("h1").html("Player: " + color);
 
   for (var i = 0; i < originalArray.length; i++){
     $( originalArray[i] ).show();
   }
        
   for (var i = 0; i < originalArray.length; i++){
-    for (var j = 0; j < piecePlayedByPlayer[color].length; j++){
-       if (piecePlayedByPlayer[color].indexOf(originalArray[i]) == -1){
+    for (var j = 0; j < player[count % 4].pieces.length; j++){
+       if (player[count % 4].pieces.indexOf(originalArray[i]) == -1){
         $( originalArray[i] ).hide();
        }
     }    
   }
 
-  $("h1").html("Player: " + playerColor[count % 4]);
+  $("h1").html("Player: " + color);
 }
 
 //compares player scores to see who is the highest
@@ -517,7 +524,7 @@ calculateWinner = function(){
    for (var i = 0; i < playerScore.length; i++){
       if (playerScore[i] > leadingScore){
          leadingScore = playerScore[i];
-         winner = playerColor[i];
+         winner = player.color[i];
       }
    }
    return winner;
@@ -549,17 +556,64 @@ var checkForGameOver = function(){
       }
    } else {
       count++;
-      $("h3").html("Player: " + playerColor[count % 4]);
+      $("h3").html("Player: " + player.color[count % 4]);
       getPlayerPiecesLeft();
    }
 }
 
 var gameBoard = [];
 var stateOf = [null, null];
-var playerColor = ["blue", "yellow", "red", "green"];
-var playerStart = ["#19-0", "#0-0", "#0-19", "#19-19"];
-var playerPassed = [null, null, null, null];
-var playerScore = [-89, -89, -89, -89];
+
+var player = [
+  {
+    color: "blue",
+    startingPoint: "#19-0",
+    passed: null,
+    score: -89,
+    pieces:
+      ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+      "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+      "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+      "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+      "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+  },
+  {
+    color: "yellow",
+    startingPoint: "#0-0",
+    passed: null,
+    score: -89,
+    pieces:
+      ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+      "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+      "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+      "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+      "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+  },
+  {
+    color: "red",
+    startingPoint: "#0-19",
+    passed: null,
+    score: -89,
+    pieces:
+      ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+      "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+      "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+      "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+      "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+  },
+  {
+    color: "green",
+    startingPoint: "#19-19",
+    passed: null,
+    score: -89,
+    pieces:
+      ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
+      "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
+      "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
+      "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+      "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
+  }
+]
 var count = 0;
 var imageClicked = "off";
 var thisPieceID = null;
@@ -571,31 +625,6 @@ var originalArray = ["#piece-0", "#piece-1", "#piece-2", "#piece-3",
    "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
    "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
 
-var piecePlayedByPlayer = {
-   blue: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
-         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
-
-   yellow: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
-         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
-
-   red: ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
-         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"],
-
-   green:["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-         "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-         "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-         "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
-         "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
-};
 
 $(document).ready(function(){
 	setGameBoard();
@@ -608,20 +637,19 @@ $(document).ready(function(){
     checkForGameOver();
   });
 
-   //listens for a click event on the images of the game pieces
    $(".game-piece").click(function(){
 
-      //gets ID of the image clicked, returns a string ex. piece-11
+      // ex. piece-11
       thisPieceID = $( this ).attr('id');
 
       imageClicked = "on";
    });
 
    //adds a "shadow" of the piece before it is played on a position relative to the board
-   $(".game-tile").hover(function() {
+    $(".game-tile").hover(function() {
      
       if (imageClicked === "on"){
-      $( ".hovered" ).css("background-color", playerColor[count % 4]);
+        $( ".hovered" ).css("background-color", player[count % 4].color);
          //gets ID of the tile that the mouse is hovering over
          currentLocation = $( this ).attr('id'); // made it not declared inside the event.  change here if it messes things up         
          stateOf[1] = getPiece(thisPieceID, currentLocation);
@@ -632,11 +660,10 @@ $(document).ready(function(){
          for (var i = 0; i < thisShadow.length; i++){
             if ( !$(thisShadow[i]).hasClass( "occupied" ) ){
                $( thisShadow[i] ).addClass("hovered");
-               $( thisShadow[i] ).addClass(playerColor[count % 4]);
+               $( thisShadow[i] ).addClass(player[count % 4].color);
             }
          }
-
-         stateOf[0] = thisShadow;
+      stateOf[0] = thisShadow;
       }
 
    //removes the after shadow of the piece after you move the mouse to another div
@@ -646,7 +673,7 @@ $(document).ready(function(){
       for (var i = 0; i < resetShadow.length; i++){
         if ( !$(resetShadow[i]).hasClass( "occupied" ) ){
           $( resetShadow[i] ).removeClass("hovered");
-          $( resetShadow[i] ).removeClass(playerColor[count % 4]);
+          $( resetShadow[i] ).removeClass(player[count % 4].color);
         }
       }
     }
@@ -656,6 +683,7 @@ $(document).ready(function(){
   $(document).keyup(function(e){      
     if(e.keyCode == 83){ //pressing s
       rotateRight(thisPieceID);
+
     }
     if(e.keyCode == 65){ //pressing a 
       rotateLeft(thisPieceID);
@@ -667,7 +695,7 @@ $(document).ready(function(){
       
       //you're hovered over in order to check corner later
       var turn = count % 4;
-      if (stateOf[1].indexOf(playerStart[turn]) == -1 && count < 4){
+      if (stateOf[1].indexOf(player[turn].startingPoint) == -1 && count < 4){
          informError("Please play in the designated corner for the first move");
       } else if (squareIsTaken() && count >= 4){  
          informError("There's already a piece that is played here!");
@@ -684,26 +712,24 @@ $(document).ready(function(){
         var thisShadow = stateOf[1]
         for (var i = 0; i < thisShadow.length; i++){
           $( thisShadow[i] ).addClass('occupied');
-          $( thisShadow[i] ).css('background-color', playerColor[turn])
+          $( thisShadow[i] ).css('background-color', player[turn].color)
           $( thisShadow[i] ).removeClass('hovered');
           addToGameBoard(thisShadow[i]);
-          playerScore[turn] ++;
+          player[turn].score ++;
         }
         var a = (parseInt(arraySplit(thisPieceID, 1)));
         var b = "#piece-" + a;
-        var color = playerColor[count % 4];
+        var currentPlayer = player[count % 4];
 
         //splices from the array
-        for (var i = 0; i < piecePlayedByPlayer[color].length; i++){
-          if (piecePlayedByPlayer[color][i].indexOf(b) > -1) {
-             piecePlayedByPlayer[color].splice(i, 1);
+        for (var i = 0; i < currentPlayer.pieces.length; i++){
+          if (currentPlayer.pieces[i].indexOf(b) > -1) {
+             currentPlayer.pieces.splice(i, 1);
           }
         }
 
         count++;
         getPlayerPiecesLeft();
-
-        $("#score").html(playerScore);
       }  
    }) 
 });
