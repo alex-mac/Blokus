@@ -314,10 +314,9 @@ var setGameBoard = function(){
 	}
 
   // starting spots
-  $("#19-0").css("background-color", "blue");
-  $("#0-0").css("background-color", "yellow");
-  $("#0-19").css("background-color", "red");
-  $("#19-19").css("background-color", "green");
+  for (var i = 0; i < player.length; i++) {
+    $(player[i].startingPoint).css("background-color", player[i].color)
+  }
 }
 
 var informError = function(string){
@@ -457,7 +456,7 @@ var checkForCorners = function(){
           
           var checkMe = ("#" + rowOffset + "-" + columnOffset);
           if($(checkMe).hasClass(player.color)){
-            return false;   
+            return true;   
           }
        }
     }
@@ -695,7 +694,10 @@ $(document).ready(function(){
       
       //you're hovered over in order to check corner later
       var turn = count % 4;
-      if (stateOf[1].indexOf(player[turn].startingPoint) == -1 && count < 4){
+      console.log(count)
+
+      // broken here
+      if (count < 4 && stateOf[1].indexOf(player[turn].startingPoint) == -1){
          informError("Please play in the designated corner for the first move");
       } else if (squareIsTaken() && count >= 4){  
          informError("There's already a piece that is played here!");
@@ -727,7 +729,6 @@ $(document).ready(function(){
              currentPlayer.pieces.splice(i, 1);
           }
         }
-
         count++;
         getPlayerPiecesLeft();
       }  
