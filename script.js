@@ -430,7 +430,7 @@ var checkForSides = function(){
           var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
           
           var checkMe = ("#" + rowOffset + "-" + columnOffset);
-          if($(checkMe).hasClass(player.color)){
+          if($(checkMe).hasClass(player[count % 4].color)){
                 return true;
           }
        }
@@ -455,8 +455,9 @@ var checkForCorners = function(){
           var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
           
           var checkMe = ("#" + rowOffset + "-" + columnOffset);
-          if($(checkMe).hasClass(player.color)){
-            return true;   
+          console.log(count % 4)
+          if($(checkMe).hasClass(player[count % 4].color)){
+            return false;   
           }
        }
     }
@@ -694,7 +695,6 @@ $(document).ready(function(){
       
       //you're hovered over in order to check corner later
       var turn = count % 4;
-      console.log(count)
 
       // broken here
       if (count < 4 && stateOf[1].indexOf(player[turn].startingPoint) == -1){
@@ -702,15 +702,13 @@ $(document).ready(function(){
       } else if (squareIsTaken() && count >= 4){  
          informError("There's already a piece that is played here!");
       } else if (checkForSides() && count >= 4) {
-            informError("You can't touch your own color on the sides");
-          
+        informError("You can't touch your own color on the sides");  
       } else if (count >= 4 && checkForCorners() ){
-            informError("Make sure to touch your own corner!");
+        informError("Make sure to touch your own corner!");
       } else {
-         imageClicked = "off";
+        imageClicked = "off";
          
         //listens for a click on the gameboard. to try to add a piece onto the gameboard
-        //only works if a piece is selected
         var thisShadow = stateOf[1]
         for (var i = 0; i < thisShadow.length; i++){
           $( thisShadow[i] ).addClass('occupied');
