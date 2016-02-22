@@ -327,22 +327,7 @@ var informError = function(string){
 });
 }
 
-//rotates the piece clockwise
-var rotateRight = function(shape){
-	var index = arraySplit(shape, 1);
-	dummyArray = gamePiece[index].piece;
-	var temp = new Array(7);
-
-	for (var i = 0; i < 7; i++){
-		temp[i] = new Array(7);
-		for (var j = 0; j < 7; j++){
-			temp[i][j] = dummyArray[temp.length - j - 1][i];
-		}
-	}
-	gamePiece[index].piece = temp;
-};
-
-var rotateLeft = function(shape){
+var rotate = function(shape, direction) {
   var index = arraySplit(shape, 1);
   dummyArray = gamePiece[index].piece;
   var temp = new Array(7);
@@ -350,10 +335,13 @@ var rotateLeft = function(shape){
   for (var i = 0; i < 7; i++){
     temp[i] = new Array(7);
     for (var j = 0; j < 7; j++){
-      temp[i][j] = dummyArray[j][temp.length - i - 1];
+      if (direction === "right") {
+        temp[i][j] = dummyArray[temp.length - j - 1][i];
+      } else if (direction === "left") {
+        temp[i][j] = dummyArray[j][temp.length - i - 1];
+      }
     }
   }
-
   gamePiece[index].piece = temp;
 }
 
@@ -682,11 +670,11 @@ $(document).ready(function(){
   //listens for a key click and rotates the piece depending on which key was pressed
   $(document).keyup(function(e){      
     if(e.keyCode == 83){ //pressing s
-      rotateRight(thisPieceID);
+      rotate(thisPieceID, "right");
 
     }
     if(e.keyCode == 65){ //pressing a 
-      rotateLeft(thisPieceID);
+      rotate(thisPieceID, "left");
     }
   });
 
