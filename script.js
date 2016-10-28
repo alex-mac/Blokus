@@ -544,7 +544,7 @@ var checkForGameOver = function(){
       }
    } else {
       count++;
-      $("h3").html("Player: " + player.color[count % 4]);
+      $("h3").html("Player: " + player[count % 4].color);
       getPlayerPiecesLeft();
    }
 }
