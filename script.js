@@ -1,7 +1,7 @@
-var gamePiece = [ 
+var gamePiece = [
   {
-    piece: 
-  [          
+    piece:
+  [
     [0, 0, 0, 0, 0, 0, 0], // * * * * *
     [0, 0, 0, 0, 0, 0, 0], //index = 00
     [1, 2, 2, 2, 2, 2, 1],
@@ -28,7 +28,7 @@ var gamePiece = [
   },
 
   {
-    piece:     
+    piece:
   [                          //   * * *
     [0, 0, 1, 2, 1, 0, 0],  // * *
     [0, 0, 2, 3, 2, 0, 0],  //index = 02
@@ -42,7 +42,7 @@ var gamePiece = [
   },
 
   {
-    piece:     
+    piece:
   [                          //   *
     [0, 0, 0, 0, 0, 0, 0],  // * * * *
     [0, 0, 1, 2, 1, 0, 0],  //index = 03
@@ -56,7 +56,7 @@ var gamePiece = [
   },
 
   {
-    piece:     
+    piece:
   [                         //   *
     [0, 0, 0, 0, 0, 0, 0], // * * *
     [0, 0, 1, 2, 1, 0, 0], //     *
@@ -70,7 +70,7 @@ var gamePiece = [
   },
 
   {
-    piece:    
+    piece:
   [                         //   *
     [0, 0, 0, 0, 0, 0, 0], // * * *
     [0, 0, 1, 2, 1, 0, 0], //   *
@@ -84,7 +84,7 @@ var gamePiece = [
   },
 
   {
-    piece:     
+    piece:
   [                         // * * *
     [0, 0, 0, 0, 0, 0, 0], // *   *
     [0, 0, 0, 0, 0, 0, 0], //index = 06
@@ -112,7 +112,7 @@ var gamePiece = [
   },
 
   {
-    piece: 
+    piece:
   [                         //     *
     [0, 0, 0, 0, 0, 0, 0], //   * *
     [0, 0, 0, 1, 2, 1, 0], // * *
@@ -171,10 +171,10 @@ var gamePiece = [
     piece:
 
   [                        // * * * *
-    [0, 0, 1, 2, 1, 0, 0], // 
-    [0, 0, 2, 3, 2, 0, 0], //index = 12 
+    [0, 0, 1, 2, 1, 0, 0], //
+    [0, 0, 2, 3, 2, 0, 0], //index = 12
     [0, 0, 2, 3, 2, 0, 0],
-    [0, 0, 2, 3, 2, 0, 0], 
+    [0, 0, 2, 3, 2, 0, 0],
     [0, 0, 2, 3, 2, 0, 0],
     [0, 0, 1, 2, 1, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
@@ -187,9 +187,9 @@ var gamePiece = [
 
   [                        // * *
     [0, 0, 0, 0, 0, 0, 0], //   * *
-    [0, 0, 1, 2, 2, 1, 0], //index = 13 
+    [0, 0, 1, 2, 2, 1, 0], //index = 13
     [0, 1, 2, 3, 3, 2, 0],
-    [0, 2, 3, 3, 2, 1, 0], 
+    [0, 2, 3, 3, 2, 1, 0],
     [0, 1, 2, 2, 1, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
@@ -202,9 +202,9 @@ var gamePiece = [
 
   [                        //  * *
     [0, 0, 0, 0, 0, 0, 0], //  * *
-    [0, 1, 2, 2, 1, 0, 0], //index = 14 
+    [0, 1, 2, 2, 1, 0, 0], //index = 14
     [0, 2, 3, 3, 2, 0, 0],
-    [0, 2, 3, 3, 2, 0, 0], 
+    [0, 2, 3, 3, 2, 0, 0],
     [0, 1, 2, 2, 1, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
@@ -219,7 +219,7 @@ var gamePiece = [
     [0, 0, 0, 0, 0, 0, 0], // * * *
     [0, 0, 1, 2, 1, 0, 0], //index = 15
     [0, 1, 2, 3, 2, 1, 0],
-    [0, 2, 3, 3, 3, 2, 0], 
+    [0, 2, 3, 3, 3, 2, 0],
     [0, 1, 2, 2, 2, 1, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
@@ -230,11 +230,11 @@ var gamePiece = [
   {
     piece:
 
-  [                        // * * * 
+  [                        // * * *
     [0, 0, 0, 0, 0, 0, 0], //     *
     [0, 0, 0, 0, 0, 0, 0], //index = 16
     [0, 1, 2, 2, 2, 2, 0],
-    [0, 2, 3, 3, 3, 2, 0], 
+    [0, 2, 3, 3, 3, 2, 0],
     [0, 1, 2, 2, 3, 2, 0],
     [0, 0, 0, 1, 2, 1, 0],
     [0, 0, 0, 0, 0, 0, 0]
@@ -244,11 +244,11 @@ var gamePiece = [
 
   {
     piece:
-  [                         
+  [
     [0, 0, 0, 0, 0, 0, 0], // * * *
     [0, 0, 0, 0, 0, 0, 0], //index = 17
     [0, 1, 2, 2, 2, 1, 0],
-    [0, 2, 3, 3, 3, 2, 0], 
+    [0, 2, 3, 3, 3, 2, 0],
     [0, 1, 2, 2, 2, 1, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
@@ -262,7 +262,7 @@ var gamePiece = [
     [0, 0, 0, 0, 0, 0, 0], // * *
     [0, 0, 1, 2, 1, 0, 0], //index = 18
     [0, 0, 2, 3, 2, 1, 0],
-    [0, 0, 2, 3, 3, 2, 0], 
+    [0, 0, 2, 3, 3, 2, 0],
     [0, 0, 1, 2, 2, 1, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
@@ -272,11 +272,11 @@ var gamePiece = [
 
   {
     piece:
-  [                        
-    [0, 0, 0, 0, 0, 0, 0], // * * 
-    [0, 0, 1, 2, 1, 0, 0], //index = 19 
+  [
+    [0, 0, 0, 0, 0, 0, 0], // * *
+    [0, 0, 1, 2, 1, 0, 0], //index = 19
     [0, 0, 2, 3, 2, 0, 0],
-    [0, 0, 2, 3, 2, 0, 0], 
+    [0, 0, 2, 3, 2, 0, 0],
     [0, 0, 1, 2, 1, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
@@ -287,14 +287,14 @@ var gamePiece = [
   {
     piece:
   [                        // *
-    [0, 0, 0, 0, 0, 0, 0], // 
-    [0, 0, 0, 0, 0, 0, 0], //index = 20 
+    [0, 0, 0, 0, 0, 0, 0], //
+    [0, 0, 0, 0, 0, 0, 0], //index = 20
     [0, 0, 1, 2, 1, 0, 0],
-    [0, 0, 2, 3, 2, 0, 0], 
+    [0, 0, 2, 3, 2, 0, 0],
     [0, 0, 1, 2, 1, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
-  ], 
+  ],
     id: "#piece-20"
   }
 ];
@@ -320,9 +320,9 @@ var setGameBoard = function(){
 }
 
 var informError = function(string){
-  swal({   
+  swal({
      title: "Invalid Move!",
-     text: string,   
+     text: string,
      type: "error"
 });
 }
@@ -359,9 +359,9 @@ var getPiece = function (shape, location){
 	var index = arraySplit(shape, 1),
 	currentMouseRow = arraySplit(location, 0),
 	currentMouseColumn = arraySplit(location, 1),
-	
+
 	//clones the array of the shape, defensive copying
-	dummyArray = gamePiece[index].piece; 
+	dummyArray = gamePiece[index].piece;
 
 // var getPiece = function(dummyArray, currentMouseRow, currentMouseColumn) {
 	var pieceShape = [];
@@ -374,7 +374,7 @@ var getPiece = function (shape, location){
 				//of the 7x7 dummyArray
 				var columnOffset = parseInt(pieceArrayRow) + parseInt(currentMouseRow) - Math.floor(dummyArray.length / 2);
 				var rowOffset = parseInt(pieceArrayColumn) + parseInt(currentMouseColumn) - Math.floor(dummyArray.length / 2);
-				
+
 				var change = ("#" + columnOffset + "-" + rowOffset);
 				pieceShape.push(change);
 			}
@@ -392,7 +392,7 @@ var convertToCoordinates = function(string) {
    return coordinates;
 }
 
-//checks if the value ingameBoard is 3. If 3 found, return true; 
+//checks if the value ingameBoard is 3. If 3 found, return true;
 var squareIsTaken = function(){
   var arr1 = stateOf[1];
   for (var i = 0; i < arr1.length; i++){
@@ -416,7 +416,7 @@ var checkForSides = function(){
        if (arr9[pieceArrayRow][pieceArrayColumn] == 2){
           var columnOffset = parseInt(pieceArrayColumn) + parseInt(gameBoardMouseColumn) - Math.floor(arr9.length / 2);
           var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
-          
+
           var checkMe = ("#" + rowOffset + "-" + columnOffset);
           if($(checkMe).hasClass(player[count % 4].color)){
                 return true;
@@ -441,11 +441,11 @@ var checkForCorners = function(){
           totalCorners++;
           var columnOffset = parseInt(pieceArrayColumn) + parseInt(gameBoardMouseColumn) - Math.floor(arr9.length / 2);
           var rowOffset = parseInt(pieceArrayRow) + parseInt(gameBoardMouseRow) - Math.floor(arr9.length / 2);
-          
+
           var checkMe = ("#" + rowOffset + "-" + columnOffset);
           console.log(count % 4)
           if($(checkMe).hasClass(player[count % 4].color)){
-            return false;   
+            return false;
           }
        }
     }
@@ -461,7 +461,7 @@ var addToGameBoard = function(pieceID){
 //shows available pieces left
 var getPlayerPiecesLeft = function() {
   color = player[count % 4].color;
-  
+
   // changes the image of pieces on the left
   switch(color) {
     case "blue":
@@ -487,19 +487,19 @@ var getPlayerPiecesLeft = function() {
     default:
       console.log("something went terribly wrong")
   }
-  
+
   $("h1").html("Player: " + color);
 
   for (var i = 0; i < originalArray.length; i++){
     $( originalArray[i] ).show();
   }
-       
+
   for (var i = 0; i < originalArray.length; i++){
     for (var j = 0; j < player[count % 4].pieces.length; j++){
        if (player[count % 4].pieces.indexOf(originalArray[i]) == -1){
         $( originalArray[i] ).hide();
        }
-    }    
+    }
   }
 
   $("h1").html("Player: " + color);
@@ -521,8 +521,8 @@ calculateWinner = function(){
 //checks for 4 passes. After everyone passes at least once, proceeds to game Over
 var checkForGameOver = function(){
    var gameOver = 0;
-   for (var i = 0; i < playerPassed.length; i++){ 
-      if (playerPassed[i] === "passed"){
+   for (var i = 0; i < player.length; i++){
+      if (player[i].passed === "passed"){
          gameOver++;
       }
    }
@@ -530,16 +530,16 @@ var checkForGameOver = function(){
    if(gameOver === 4){ //if everyone has passed, then calculate the winner
       var winner = calculateWinner();
       if (winner == null) {
-         swal({   
-            title: "Winner!",   
-            text: "It's a tie!",  
-            imageUrl: "images/thumbs-up.jpg" 
+         swal({
+            title: "Winner!",
+            text: "It's a tie!",
+            imageUrl: "images/thumbs-up.jpg"
          });
       } else {
-         swal({   
-            title: "Winner!",   
-            text: "The winner is " + winner + "!",  
-            imageUrl: "images/thumbs-up.jpg" 
+         swal({
+            title: "Winner!",
+            text: "The winner is " + winner + "!",
+            imageUrl: "images/thumbs-up.jpg"
          });
       }
    } else {
@@ -559,10 +559,10 @@ var player = [
     passed: null,
     score: -89,
     pieces:
-      ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-      "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-      "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-      "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+      ["#piece-0", "#piece-1", "#piece-2", "#piece-3",
+      "#piece-4", "#piece-5", "#piece-6", "#piece-7",
+      "#piece-8", "#piece-9", "#piece-10", "#piece-11",
+      "#piece-12", "#piece-13", "#piece-14", "#piece-15",
       "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
   },
   {
@@ -571,10 +571,10 @@ var player = [
     passed: null,
     score: -89,
     pieces:
-      ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-      "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-      "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-      "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+      ["#piece-0", "#piece-1", "#piece-2", "#piece-3",
+      "#piece-4", "#piece-5", "#piece-6", "#piece-7",
+      "#piece-8", "#piece-9", "#piece-10", "#piece-11",
+      "#piece-12", "#piece-13", "#piece-14", "#piece-15",
       "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
   },
   {
@@ -583,10 +583,10 @@ var player = [
     passed: null,
     score: -89,
     pieces:
-      ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-      "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-      "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-      "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+      ["#piece-0", "#piece-1", "#piece-2", "#piece-3",
+      "#piece-4", "#piece-5", "#piece-6", "#piece-7",
+      "#piece-8", "#piece-9", "#piece-10", "#piece-11",
+      "#piece-12", "#piece-13", "#piece-14", "#piece-15",
       "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
   },
   {
@@ -595,10 +595,10 @@ var player = [
     passed: null,
     score: -89,
     pieces:
-      ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-      "#piece-4", "#piece-5", "#piece-6", "#piece-7", 
-      "#piece-8", "#piece-9", "#piece-10", "#piece-11", 
-      "#piece-12", "#piece-13", "#piece-14", "#piece-15", 
+      ["#piece-0", "#piece-1", "#piece-2", "#piece-3",
+      "#piece-4", "#piece-5", "#piece-6", "#piece-7",
+      "#piece-8", "#piece-9", "#piece-10", "#piece-11",
+      "#piece-12", "#piece-13", "#piece-14", "#piece-15",
       "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
   }
 ]
@@ -608,9 +608,9 @@ var thisPieceID = null;
 var currentLocation = null;
 
 
-var originalArray = ["#piece-0", "#piece-1", "#piece-2", "#piece-3", 
-   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9", 
-   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14", 
+var originalArray = ["#piece-0", "#piece-1", "#piece-2", "#piece-3",
+   "#piece-4", "#piece-5", "#piece-6", "#piece-7", "#piece-8", "#piece-9",
+   "#piece-10", "#piece-11", "#piece-12", "#piece-13", "#piece-14",
    "#piece-15", "#piece-16", "#piece-17", "#piece-18", "#piece-19", "#piece-20"]
 
 
@@ -621,7 +621,7 @@ $(document).ready(function(){
 
   //sets the index in the array for that player to "passed"
   $("#button").click(function(){
-    playerPassed[count % 4] = "passed";
+    player[count % 4].passed = "passed";
     checkForGameOver();
   });
 
@@ -635,11 +635,11 @@ $(document).ready(function(){
 
    //adds a "shadow" of the piece before it is played on a position relative to the board
     $(".game-tile").hover(function() {
-     
+
       if (imageClicked === "on"){
         $( ".hovered" ).css("background-color", player[count % 4].color);
          //gets ID of the tile that the mouse is hovering over
-         currentLocation = $( this ).attr('id'); // made it not declared inside the event.  change here if it messes things up         
+         currentLocation = $( this ).attr('id'); // made it not declared inside the event.  change here if it messes things up
          stateOf[1] = getPiece(thisPieceID, currentLocation);
 
          var thisShadow = stateOf[1]
@@ -655,7 +655,7 @@ $(document).ready(function(){
       }
 
    //removes the after shadow of the piece after you move the mouse to another div
-   }, function() {   
+   }, function() {
     if (imageClicked === "on") {
       var resetShadow = stateOf[0]
       for (var i = 0; i < resetShadow.length; i++){
@@ -666,36 +666,36 @@ $(document).ready(function(){
       }
     }
   });
-      
+
   //listens for a key click and rotates the piece depending on which key was pressed
-  $(document).keyup(function(e){      
+  $(document).keyup(function(e){
     if(e.keyCode == 83){ //pressing s
       rotate(thisPieceID, "right");
 
     }
-    if(e.keyCode == 65){ //pressing a 
+    if(e.keyCode == 65){ //pressing a
       rotate(thisPieceID, "left");
     }
   });
 
   //removes all event handlers associated with the class gametile after the player lifts their mouse
   $("#game-board").mouseup(function(){
-      
+
       //you're hovered over in order to check corner later
       var turn = count % 4;
 
       // broken here
       if (count < 4 && stateOf[1].indexOf(player[turn].startingPoint) == -1){
          informError("Please play in the designated corner for the first move");
-      } else if (squareIsTaken() && count >= 4){  
+      } else if (squareIsTaken() && count >= 4){
          informError("There's already a piece that is played here!");
       } else if (checkForSides() && count >= 4) {
-        informError("You can't touch your own color on the sides");  
+        informError("You can't touch your own color on the sides");
       } else if (count >= 4 && checkForCorners() ){
         informError("Make sure to touch your own corner!");
       } else {
         imageClicked = "off";
-         
+
         //listens for a click on the gameboard. to try to add a piece onto the gameboard
         var thisShadow = stateOf[1]
         for (var i = 0; i < thisShadow.length; i++){
@@ -717,6 +717,6 @@ $(document).ready(function(){
         }
         count++;
         getPlayerPiecesLeft();
-      }  
-   }) 
+      }
+   })
 });
